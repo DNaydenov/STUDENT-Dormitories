@@ -1,4 +1,8 @@
-﻿using System;
+﻿using GMap.NET;
+using GMap.NET.MapProviders;
+using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +26,16 @@ namespace GUI
     {
         public MainWindow()
         {
+            map.MapProvider = GMap.NET.MapProviders.BingMapProvider.Instance;
             InitializeComponent();
+            map.MapProvider = GMapProviders.GoogleMap;
+            map.Position= new PointLatLng(23, 23);
+
+            GMapOverlay oMarker = new GMapOverlay("marker1");
+            GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(-25.966688, 32.580528),
+            GMarkerGoogleType.green);
+            oMarker.Markers.Add(marker);
+            //map.OverLays
         }
     }
 }

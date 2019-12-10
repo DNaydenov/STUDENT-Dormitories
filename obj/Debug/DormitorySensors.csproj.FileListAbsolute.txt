@@ -1,7 +1,0 @@
-C:\Users\admin071018\source\repos\DormitorySensors\DormitorySensors\bin\Debug\DormitorySensors.exe.config
-C:\Users\admin071018\source\repos\DormitorySensors\DormitorySensors\bin\Debug\DormitorySensors.exe
-C:\Users\admin071018\source\repos\DormitorySensors\DormitorySensors\bin\Debug\DormitorySensors.pdb
-C:\Users\admin071018\source\repos\DormitorySensors\DormitorySensors\obj\Debug\DormitorySensors.csprojAssemblyReference.cache
-C:\Users\admin071018\source\repos\DormitorySensors\DormitorySensors\obj\Debug\DormitorySensors.csproj.CoreCompileInputs.cache
-C:\Users\admin071018\source\repos\DormitorySensors\DormitorySensors\obj\Debug\DormitorySensors.exe
-C:\Users\admin071018\source\repos\DormitorySensors\DormitorySensors\obj\Debug\DormitorySensors.pdb

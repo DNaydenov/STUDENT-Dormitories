@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\GUI\GUI\obj\x64\Debug\
+C:\Users\User\source\repos\STUDENT-Dormitories-master\GUI\GUI\obj\x64\Debug\
 GUI
 none
 false
 DEBUG;TRACE
-D:\GUI\GUI\App.xaml
-11151548125
+C:\Users\User\source\repos\STUDENT-Dormitories-master\GUI\GUI\App.xaml
+2871973712
 
-9982692941
-24472706944
-MainWindow.xaml;
+81696987371
+24377800621
+MainWindow.xaml;AddSensorWindow.xaml;
 
-True
+False
 

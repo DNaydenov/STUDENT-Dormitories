@@ -6,10 +6,49 @@
         xmlns:local="clr-namespace:GUI"
         xmlns:WindowsPresentation="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation" x:Class="GUI.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="450" Width="800"  MinHeight="300" MinWidth="550">
+    <TabControl Margin="0">
+        <TabItem Name="MapView" Header="Map view" IsSelected="True">
+            <Grid>
 
-        <WindowsPresentation:GMapControl Name="map"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!--<WindowsPresentation:GMapControl Name="map" Grid.Column="0"/>-->
+                <Button Name="Add" Content="Add" FontSize="20" Grid.Row="0" Grid.Column="1" Width="100" Height="50" Click="Add_Click" />
+                <Button Name="Modify" Content="Modify" FontSize="20" Grid.Row="1" Grid.Column="1" Width="100" Height="50" />
+                <Button Name="Remove" Content="Remove" FontSize="20" Grid.Row="2" Grid.Column="1" Width="100" Height="50" />
+                <Button Name="ViewAllBtn" Content="View all" FontSize="20" Grid.Row="3" Grid.Column="1" Width="100" Height="50" />
 
-    </Grid>
+            </Grid>
+        </TabItem>
+        
+        <TabItem Name="ViewAllTab" Header="View all" IsSelected="False">
+            <Grid>
+
+                <DataGrid Name="dataGrid" AutoGenerateColumns="False" Padding="20,20">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="No." Binding="{Binding Path=no}" Width="60" MinWidth="30" />
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=name}" Width="150" MinWidth="30" />
+                        <DataGridTextColumn Header="Description" Binding="{Binding Path=desc}" Width="250" MinWidth="30" />
+                        <DataGridTextColumn Header="Cur value" Binding="{Binding Path=curValue}" Width="120" MinWidth="30" />
+                        <DataGridTextColumn Header="Graphics" Binding="{Binding Path=graphics}" Width="*" MinWidth="30" />
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </Grid>
+        </TabItem>
+        
+        <TabItem Name="GraphicalViewTab" Header="Graphical info" IsSelected="False">
+
+        </TabItem>
+    </TabControl>
+
 </Window>

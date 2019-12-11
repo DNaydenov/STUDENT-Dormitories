@@ -33,7 +33,7 @@
         <Label Content="Name:" Height="50" Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Grid.Column="2" Grid.Row="3" />
         <Label Content="Name:" Height="50" Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Grid.Column="2" Grid.Row="4" />
 
-        <TextBox Name="Name1" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center"/>
+        <TextBox Name="Name1" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" />
         <TextBox Name="Name2" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" />
         <TextBox Name="Name3" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="2" VerticalContentAlignment="Center" />
         <TextBox Name="Name4" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="3" VerticalContentAlignment="Center" />
@@ -56,7 +56,7 @@
 
             <Button Name="confirmAdd" Content="Add Sensor" Height="60" Width="180" FontSize="24" Grid.Column="0" Grid.Row="0" Click="ConfirmAdd_Click"/>
             <Button Name="clearAddData" Content="Clear Data" Height="60" Width="180" FontSize="24" Grid.Column="1" Grid.Row="0" Click="ClearAddData_Click" />
-            <Button Name="cancelAdd" Content="Cancel" Height="60" Width="180" FontSize="24" Grid.Column="2" Grid.Row="0" Click="CancelAdd_Click" />
+            <Button Name="cancelAdd" Content="Cancel" IsCancel="True" Height="60" Width="180" FontSize="24" Grid.Column="2" Grid.Row="0" Click="CancelAdd_Click" />
         </Grid>
 
     </Grid>

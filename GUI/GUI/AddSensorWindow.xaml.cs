@@ -31,12 +31,26 @@ namespace GUI
 
         private void ClearAddData_Click(object sender, RoutedEventArgs e)
         {
-
+            ClearUserInput();
         }
 
         private void CancelAdd_Click(object sender, RoutedEventArgs e)
         {
+           
+        }
 
+        private void ClearUserInput()
+        {
+            this.Name0.Clear();
+            this.Name1.Clear();
+            this.Name2.Clear();
+            this.Name3.Clear();
+            this.Name4.Clear();
+            this.Name5.Clear();
+            this.Name6.Clear();
+            this.Name7.Clear();
+            this.Name8.Clear();
+            this.Name9.Clear();
         }
     }
 }

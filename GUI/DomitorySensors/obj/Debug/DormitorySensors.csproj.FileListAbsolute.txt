@@ -1,0 +1,6 @@
+C:\Users\User\STUDENT-Dormitories\GUI\DomitorySensors\obj\Debug\DormitorySensors.csproj.CoreCompileInputs.cache
+C:\Users\User\STUDENT-Dormitories\GUI\DomitorySensors\bin\Debug\DormitorySensors.exe.config
+C:\Users\User\STUDENT-Dormitories\GUI\DomitorySensors\bin\Debug\DormitorySensors.exe
+C:\Users\User\STUDENT-Dormitories\GUI\DomitorySensors\bin\Debug\DormitorySensors.pdb
+C:\Users\User\STUDENT-Dormitories\GUI\DomitorySensors\obj\Debug\DormitorySensors.exe
+C:\Users\User\STUDENT-Dormitories\GUI\DomitorySensors\obj\Debug\DormitorySensors.pdb

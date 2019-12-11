@@ -17,9 +17,9 @@ namespace GUI
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class AddSensorWindow : Window
+    public partial class AddModifySensorWindow : Window
     {
-        public AddSensorWindow()
+        public AddModifySensorWindow()
         {
             InitializeComponent();
         }

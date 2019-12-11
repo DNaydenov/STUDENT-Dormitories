@@ -1,4 +1,5 @@
-﻿using GMap.NET;
+﻿using DormitorySensor;
+using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsPresentation;
@@ -62,24 +63,43 @@ namespace GUI
 
         public void InitViewAllList(DataGrid dataGrid)
         {
-            List<dynamic> it = new List<dynamic>();
-            it.Add(new { no = 1, name = "sensor1", desc = "asdf", curValue = 23, graphics = "some URL1" });
-            it.Add(new { no = 2, name = "sensor2", desc = "asdf", curValue = 24, graphics = "some URL2" });
-            it.Add(new { no = 3, name = "sensor3", desc = "asdf", curValue = 25, graphics = "some URL3" });
-            it.Add(new { no = 4, name = "sensor4", desc = "asdf", curValue = 26, graphics = "some URL4" });
-            it.Add(new { no = 5, name = "sensor5", desc = "asdf", curValue = 27, graphics = "some URL5" });
-            it.Add(new { no = 6, name = "sensor6", desc = "asdf", curValue = 28, graphics = "some URL6" });
-            it.Add(new { no = 7, name = "sensor5", desc = "asdf", curValue = 27, graphics = "some URL5" });
-            it.Add(new { no = 8, name = "sensor6", desc = "asdf", curValue = 28, graphics = "some URL6" });
-            it.Add(new { no = 9, name = "sensor5", desc = "asdf", curValue = 27, graphics = "some URL5" });
-            it.Add(new { no = 0, name = "sensor6", desc = "asdf", curValue = 28, graphics = "some URL6" });
-            dataGrid.ItemsSource = it;
+            SensorList.AddSensor("asd", "asd", SensorType.humidity, 20, 20); 
+            SensorList.AddSensor("asd", "asasdsd", SensorType.humidity, 20, 20); 
+            dataGrid.ItemsSource = SensorList.ListSensors;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            AddSensorWindow addSensorWindow = new AddSensorWindow();
-            addSensorWindow.ShowDialog();
+            AddModifySensorWindow AddSensorWindow = new AddModifySensorWindow();
+            AddSensorWindow.ShowDialog();
+        }
+
+        
+        private void Modify_Click(object sender, RoutedEventArgs e)
+        {
+            AddModifySensorWindow ModifySensorWindow = new AddModifySensorWindow();
+            var sensorToModify = (Sensor)dataGrid.SelectedItem;
+            ModifySensorWindow.Name1.Text = sensorToModify.Name;
+            ModifySensorWindow.Name2.Text = sensorToModify.Description;
+            //TODO
+            ModifySensorWindow.Name3.Text = sensorToModify.Description;
+            ModifySensorWindow.Name4.Text = sensorToModify.Description;
+            ModifySensorWindow.Name5.Text = sensorToModify.Description;
+            ModifySensorWindow.Name6.Text = sensorToModify.Description;
+            ModifySensorWindow.Name7.Text = sensorToModify.Description;
+            ModifySensorWindow.Name8.Text = sensorToModify.Description;
+            ModifySensorWindow.Name9.Text = sensorToModify.Description;
+            ModifySensorWindow.Name0.Text = sensorToModify.Description;
+            ModifySensorWindow.ShowDialog();
+
+        }
+
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            var sensorToRemove = (Sensor)dataGrid.SelectedItem;
+            SensorList.ListSensors.Remove(sensorToRemove);
+
+            dataGrid.Items.Refresh();
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DormitorySensors
+namespace DormitorySensor
 {
     public enum SensorType
     {
@@ -16,7 +16,40 @@ namespace DormitorySensors
     }
     public class Sensor
     {
+        #region Members
         private string name;
+        private string description;
+        private SensorType type;
+        private double latitude;
+        private double longtitude;
+        private double value;
+        private Tuple<double, double> acceptableValues;
+        private bool tickOf;
+
+        #endregion
+
+        #region Ctors
+
+        public Sensor(string name, string description, SensorType type, double latitude, double longtitute)
+        {
+            Name = name;
+            Description = description;
+            Type = type;
+            Latitude = latitude;
+            Longtitude = longtitute;
+
+        }
+        public Sensor(Sensor sens) : this(sens.name, sens.description, sens.type, sens.latitude, sens.longtitude)
+        {
+
+        }
+        public Sensor() : this(null, null, 0, 0.0, 0.0)
+        {
+
+        }
+        #endregion
+
+        #region Props
 
         public string Name
         {
@@ -24,28 +57,24 @@ namespace DormitorySensors
             set { name = value; }
         }
 
-        private string description;
 
         public string Description
         {
             get { return description; }
             set { description = value; }
         }
-        private SensorType type;
 
         public SensorType Type
         {
             get { return type; }
             set { type = value; }
         }
-        private double latitude;
 
         public double Latitude
         {
             get { return latitude; }
             set { latitude = value; }
         }
-        private double longtitude;
 
         public double Longtitude
         {
@@ -53,22 +82,11 @@ namespace DormitorySensors
             set { longtitude = value; }
         }
 
-        public Sensor(string _name, string _description, SensorType _type, double _latitude,double _longtitute)
-        {
-            Name = _name;
-            Description = _description;
-            Type = _type;
-            Latitude = _latitude;
-            Longtitude = _longtitute;
-        }
-        public Sensor(Sensor sens) : this(sens.name, sens.description, sens.type, sens.latitude, sens.longtitude)
-        {
+        #endregion
 
-        }
-        public Sensor():this(null,null,0,0.0,0.0)
-        {
 
-        }
+
+
         public void PrintSensorInfo()
         {
             Console.WriteLine("Name: {0} Description: {1} Type: {2} Latitude: {3} Longtitude: {4}", name, description, type, latitude, longtitude);

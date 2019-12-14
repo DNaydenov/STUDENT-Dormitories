@@ -8,6 +8,8 @@ namespace DormitorySensor
 {
     public static class  SensorList
     {
+        // consider using MVVM
+        // consider using ObservableCollection 
         private static List<Sensor> listSensors;
 
         static SensorList()

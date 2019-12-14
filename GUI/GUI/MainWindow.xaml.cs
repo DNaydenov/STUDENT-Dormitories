@@ -32,6 +32,9 @@ namespace GUI
 
             InitMap();
             InitViewAllList(dataGrid);
+
+            this.DataContext = new MainWindowViewModel();
+
             
         }
 
@@ -63,13 +66,14 @@ namespace GUI
 
         public void InitViewAllList(DataGrid dataGrid)
         {
-            SensorList.AddSensor("asd", "asd", SensorType.humidity, 20, 20); 
-            SensorList.AddSensor("asd", "asasdsd", SensorType.humidity, 20, 20); 
-            dataGrid.ItemsSource = SensorList.ListSensors;
+            //SensorList.AddSensor("asd", "asd", SensorType.humidity, 20, 20); 
+            //SensorList.AddSensor("asd", "asasdsd", SensorType.humidity, 20, 20); 
+            //dataGrid.ItemsSource = SensorList.ListSensors;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+            (this.DataContext as MainWindowViewModel).AddSensor("asd2", "asasdsd", SensorType.humidity, 20, 20);
             AddModifySensorWindow AddSensorWindow = new AddModifySensorWindow();
             AddSensorWindow.ShowDialog();
         }
@@ -99,7 +103,15 @@ namespace GUI
             var sensorToRemove = (Sensor)dataGrid.SelectedItem;
             SensorList.ListSensors.Remove(sensorToRemove);
 
+
             dataGrid.Items.Refresh();
+
+            //dataGrid.Items.Remove(dataGrid.SelectedItem);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as MainWindowViewModel).Load();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DormitorySensor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,8 @@ namespace GUI
         private void ConfirmAdd_Click(object sender, RoutedEventArgs e)
         {
 
+            SensorList.AddSensor(Name1.Text, Name2.Text,SensorType.noiseSensor, 0, 0);
+            ClearUserInput();
         }
 
         private void ClearAddData_Click(object sender, RoutedEventArgs e)
@@ -41,16 +44,16 @@ namespace GUI
 
         private void ClearUserInput()
         {
-            this.Name0.Clear();
-            this.Name1.Clear();
-            this.Name2.Clear();
-            this.Name3.Clear();
-            this.Name4.Clear();
-            this.Name5.Clear();
-            this.Name6.Clear();
-            this.Name7.Clear();
-            this.Name8.Clear();
-            this.Name9.Clear();
+            Name0.Clear();
+            Name1.Clear();
+            Name2.Clear();
+            Name3.Clear();
+            Name4.Clear();
+            Name5.Clear();
+            Name6.Clear();
+            Name7.Clear();
+            Name8.Clear();
+            Name9.Clear();
         }
     }
 }

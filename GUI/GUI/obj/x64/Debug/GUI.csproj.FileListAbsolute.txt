@@ -73,3 +73,11 @@ C:\Users\User\STUDENT-Dormitories\GUI\GUI\bin\x64\Debug\fr\Telerik.Windows.Contr
 C:\Users\User\STUDENT-Dormitories\GUI\GUI\bin\x64\Debug\it\Telerik.Windows.Controls.resources.dll
 C:\Users\User\STUDENT-Dormitories\GUI\GUI\bin\x64\Debug\nl\Telerik.Windows.Controls.resources.dll
 C:\Users\User\STUDENT-Dormitories\GUI\GUI\bin\x64\Debug\tr\Telerik.Windows.Controls.resources.dll
+C:\Users\Dimitar\Documents\5semester\STUDENT-Dormitories\GUI\GUI\bin\x64\Debug\Telerik.Windows.Controls.dll
+C:\Users\Dimitar\Documents\5semester\STUDENT-Dormitories\GUI\GUI\bin\x64\Debug\Telerik.Windows.Controls.xml
+C:\Users\Dimitar\Documents\5semester\STUDENT-Dormitories\GUI\GUI\bin\x64\Debug\de\Telerik.Windows.Controls.resources.dll
+C:\Users\Dimitar\Documents\5semester\STUDENT-Dormitories\GUI\GUI\bin\x64\Debug\es\Telerik.Windows.Controls.resources.dll
+C:\Users\Dimitar\Documents\5semester\STUDENT-Dormitories\GUI\GUI\bin\x64\Debug\fr\Telerik.Windows.Controls.resources.dll
+C:\Users\Dimitar\Documents\5semester\STUDENT-Dormitories\GUI\GUI\bin\x64\Debug\it\Telerik.Windows.Controls.resources.dll
+C:\Users\Dimitar\Documents\5semester\STUDENT-Dormitories\GUI\GUI\bin\x64\Debug\nl\Telerik.Windows.Controls.resources.dll
+C:\Users\Dimitar\Documents\5semester\STUDENT-Dormitories\GUI\GUI\bin\x64\Debug\tr\Telerik.Windows.Controls.resources.dll

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="WindowNameTODO" Height="600" Width="800" MinHeight="600" MinWidth="800">
+        Height="600" Width="800" MinHeight="600" MinWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -27,20 +27,18 @@
         <Label Content="type:" Height="50" Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Grid.Column="0" Grid.Row="2" />
         <Label Content="latitude:" Height="50" Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Grid.Column="0" Grid.Row="3" />
         <Label Content="longtitude:" Height="50" Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Grid.Column="0" Grid.Row="4" />
-        <Label Content="acceptableValues from:" Height="50" Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Grid.Column="2" Grid.Row="0" />
-        <Label Content="acceptableValues to:" Height="50" Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Grid.Column="2" Grid.Row="1" />
-        <Label Content="value:" Height="50" Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Grid.Column="2" Grid.Row="2" />
+        <Label Content="min Values:" Height="50" Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Grid.Column="2" Grid.Row="0" />
+        <Label Content="max Values:" Height="50" Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Grid.Column="2" Grid.Row="1" />
         <Label Content="Name:" Height="50" Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Grid.Column="2" Grid.Row="3" />
         <Label Content="Name:" Height="50" Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Grid.Column="2" Grid.Row="4" />
 
-        <TextBox Name="Name1" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" />
-        <TextBox Name="Name2" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" />
-        <TextBox Name="Name3" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="2" VerticalContentAlignment="Center" />
-        <TextBox Name="Name4" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="3" VerticalContentAlignment="Center" />
+        <TextBox Name="txtName" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" />
+        <TextBox Name="txtDescription" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" />
+        <TextBox Name="txtType" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="2" VerticalContentAlignment="Center" />
+        <TextBox Name="txtLatitude" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="3" VerticalContentAlignment="Center" />
         <TextBox Name="Name5" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="4" VerticalContentAlignment="Center" />
         <TextBox Name="Name6" Height="50" Width="120" FontSize="18" Grid.Column="3" Grid.Row="0" VerticalContentAlignment="Center" />
         <TextBox Name="Name7" Height="50" Width="120" FontSize="18" Grid.Column="3" Grid.Row="1" VerticalContentAlignment="Center" />
-        <TextBox Name="Name8" Height="50" Width="120" FontSize="18" Grid.Column="3" Grid.Row="2" VerticalContentAlignment="Center" />
         <TextBox Name="Name9" Height="50" Width="120" FontSize="18" Grid.Column="3" Grid.Row="3" VerticalContentAlignment="Center" />
         <TextBox Name="Name0" Height="50" Width="120" FontSize="18" Grid.Column="3" Grid.Row="4" VerticalContentAlignment="Center" />
 
@@ -54,9 +52,10 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Button Name="confirmAdd" Content="Add Sensor" Height="60" Width="180" FontSize="24" Grid.Column="0" Grid.Row="0" Click="ConfirmAdd_Click"/>
+            <Button Name="confirmAdd" Content="Add Sensor" IsCancel="True" Visibility="Hidden" Height="60" Width="180" FontSize="24" Grid.Column="0" Grid.Row="0" Click="ConfirmAdd_Click"/>
+            <Button Name="confirmModify" Content="Modify Sensor" IsCancel="True" Visibility="Hidden" Height="60" Width="180" FontSize="24" Grid.Column="0" Grid.Row="0" Click="ConfirmModify_Click" />
             <Button Name="clearAddData" Content="Clear Data" Height="60" Width="180" FontSize="24" Grid.Column="1" Grid.Row="0" Click="ClearAddData_Click" />
-            <Button Name="cancelAdd" Content="Cancel" IsCancel="True" Height="60" Width="180" FontSize="24" Grid.Column="2" Grid.Row="0" Click="CancelAdd_Click" />
+            <Button Name="cancelAdd" Content="Cancel" IsCancel="True" Height="60" Width="180" FontSize="24" Grid.Column="2" Grid.Row="0" />   
         </Grid>
 
     </Grid>

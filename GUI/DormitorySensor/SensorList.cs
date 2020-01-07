@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,36 +11,40 @@ namespace DormitorySensor
     {
         // consider using MVVM
         // consider using ObservableCollection 
-        private static List<Sensor> listSensors;
+        private static ObservableCollection<Sensor> listSensors = new ObservableCollection<Sensor>();
 
         static SensorList()
         {
-            ListSensors = new List<Sensor>();
+            ListSensors = new ObservableCollection<Sensor>();
         }
 
-        public static List<Sensor> ListSensors
+        public static ObservableCollection<Sensor> ListSensors
         {
             get { return listSensors; }
             set { listSensors = value; }
         }
 
-       
-        public static void AddSensor(string name, string description, SensorType type, double latitude, double longtitute)
+        public static void AddSensor(string name, string description, SensorType type, double latitude, double longtitute, Tuple<double,double> acceptableValues)
         {
-            Sensor s = new Sensor(name, description, type, latitude, longtitute);
+            Sensor s = new Sensor(name, description, type, latitude, longtitute, acceptableValues);
             listSensors.Add(s);
         }
 
-        // BONUS!!!
-        public static void Remove(int index)
+        public static void Remove(Sensor sensor)
         {
-            listSensors.RemoveAt(index - 1);
+            listSensors.Remove(sensor);
         }
 
-        //
-        public static void Modify(int index, string name, string description, SensorType type, double latitude, double longtitute)
+        public static void Modify(int id, string name, string description,
+            SensorType type, double latitude, double longtitute, Tuple<double, double> acceptableValues)
         {
-            //TODO
+            var sensorToModify =listSensors.Where(item => item.Id == id).FirstOrDefault();
+            sensorToModify.Name = name;
+            sensorToModify.Description = description;
+            sensorToModify.Type = type;
+            sensorToModify.Latitude= latitude;
+            sensorToModify.Longtitude= longtitute;
+            sensorToModify.AcceptableValues = acceptableValues;
         }
     }
 }

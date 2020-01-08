@@ -40,16 +40,16 @@ namespace GUI
 
         public void InitViewAllList(DataGrid dataGrid)
         {
-           SensorList.AddSensor("asd", "asd", SensorType.humidity, 20, 20, new Tuple<double,double> (10,40)); 
-           SensorList.AddSensor("asd", "asasdsd", SensorType.humidity, 20, 20, new Tuple<double, double>(10, 40)); 
+           SensorList.AddSensor("asd", "asd", sensorType.humidity, 20, 20, new Tuple<double,double> (10,40)); 
+           SensorList.AddSensor("asd", "asasdsd", sensorType.humidity, 20, 20, new Tuple<double, double>(10, 40)); 
            dataGrid.ItemsSource = SensorList.ListSensors;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            (this.DataContext as MainWindowViewModel).AddSensor("asd2", "asasdsd", sensorType.humidity, 20, 20);
-            AddModifySensorWindow AddSensorWindow = new AddModifySensorWindow();
-            AddSensorWindow.ShowDialog();
+        //    (this.DataContext as MainWindowViewModel).AddSensor("asd2", "asasdsd", sensorType.humidity, 20, 20,);
+        //    AddModifySensorWindow AddSensorWindow = new AddModifySensorWindow();
+        //    AddSensorWindow.ShowDialog();
         }
 
         

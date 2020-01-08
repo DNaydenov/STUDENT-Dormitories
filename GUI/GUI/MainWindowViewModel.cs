@@ -1,22 +1,22 @@
-﻿using DormitorySensor;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using DormitorySensor;
+//using System;
+//using System.Collections.Generic;
+//using System.Collections.ObjectModel;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 
-namespace GUI
-{
-    public  class MainWindowViewModel
-    {
-        // INotifyPropertyChanged
-        private ObservableCollection<Sensor> _listSensors = new ObservableCollection<Sensor>();
-        public  ObservableCollection<Sensor> ListSensors
-        {
-            get { return _listSensors; }
-            set { _listSensors = value; }
-        }
+//namespace GUI
+//{
+//    public  class MainWindowViewModel
+//    {
+//        // INotifyPropertyChanged
+//        private ObservableCollection<Sensor> _listSensors = new ObservableCollection<Sensor>();
+//        public  ObservableCollection<Sensor> ListSensors
+//        {
+//            get { return _listSensors; }
+//            set { _listSensors = value; }
+//        }
 
         public MainWindowViewModel()
         {
@@ -36,5 +36,5 @@ namespace GUI
             ListSensors.Add(s);
         }
 
-    }
-}
+//    }
+//}

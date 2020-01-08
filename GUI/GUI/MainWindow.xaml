@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:GUI"
         xmlns:WindowsPresentation="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation" x:Class="GUI.MainWindow"
         mc:Ignorable="d"
-        Loaded="Window_Loaded"  
+        Loaded="Window_Loaded"
         Title="MainWindow" Height="450" Width="800"  MinHeight="300" MinWidth="550">
     <TabControl Margin="0" SelectionChanged="TabControl_SelectionChanged">
+        <!--Closing="Window_Closing"   sloji go do loaded :D -->
         <TabItem Name="MapView" Header="Map view" IsSelected="True">
             <Grid>
-
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="86*" />
                     <ColumnDefinition Width="543*"/>

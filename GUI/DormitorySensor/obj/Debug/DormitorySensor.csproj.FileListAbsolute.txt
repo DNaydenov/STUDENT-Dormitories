@@ -1,6 +1,5 @@
 C:\Users\Dimitar\Documents\5semester\STUDENT-Dormitories\GUI\DormitorySensor\bin\Debug\DormitorySensor.dll
 C:\Users\Dimitar\Documents\5semester\STUDENT-Dormitories\GUI\DormitorySensor\bin\Debug\DormitorySensor.pdb
-C:\Users\Dimitar\Documents\5semester\STUDENT-Dormitories\GUI\DormitorySensor\obj\Debug\DormitorySensor.csprojAssemblyReference.cache
 C:\Users\Dimitar\Documents\5semester\STUDENT-Dormitories\GUI\DormitorySensor\obj\Debug\DormitorySensor.dll
 C:\Users\Dimitar\Documents\5semester\STUDENT-Dormitories\GUI\DormitorySensor\obj\Debug\DormitorySensor.pdb
 C:\Users\User\STUDENT-Dormitories\GUI\DormitorySensor\bin\Debug\DormitorySensor.dll

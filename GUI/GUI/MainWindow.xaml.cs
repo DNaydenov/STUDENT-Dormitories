@@ -30,46 +30,19 @@ namespace GUI
             
             InitializeComponent();
 
-            InitMap();
             InitViewAllList(dataGrid);
 
-            this.DataContext = new MainWindowViewModel();
+            //this.DataContext = new MainWindowViewModel();
 
             //Http client is initialized at the start of our app
             ApiHelper.InitializeClient();
         }
 
-        public void InitMap()
-        {
-            //GoogleMap gMap = new GoogleMap(map);
-            //GMaps.Instance.Mode = AccessMode.ServerAndCache;
-            //map.CanDragMap = true;
-            //map.Zoom = 5;
-            //map.MaxZoom = 18;
-            //map.MinZoom = 0;
-
-            //double lat = 23;
-            //double lng = 23;
-            //map.MapProvider = GMapProviders.GoogleMap;
-            //map.Position = new PointLatLng(lat, lng);
-
-            //PointLatLng point = new PointLatLng(lat, lng);
-            //GMap.NET.WindowsForms.Markers.GMarkerGoogle marker1 = new GMap.NET.WindowsForms.Markers.GMarkerGoogle(new PointLatLng(-25.966688, 32.580528),
-            //                                           GMap.NET.WindowsForms.Markers.GMarkerGoogleType.green);
-
-
-            ////GMapMarker marker = new GMapMarker(point);
-            ////map.Markers.Add(marker);
-
-            ////GMap.NET.WindowsForms.GMapOverlay markers = new GMap.NET.WindowsForms.GMapOverlay("marker");
-            ////map.Over
-        }
-
         public void InitViewAllList(DataGrid dataGrid)
         {
-            //SensorList.AddSensor("asd", "asd", SensorType.humidity, 20, 20); 
-            //SensorList.AddSensor("asd", "asasdsd", SensorType.humidity, 20, 20); 
-            //dataGrid.ItemsSource = SensorList.ListSensors;
+           SensorList.AddSensor("asd", "asd", SensorType.humidity, 20, 20, new Tuple<double,double> (10,40)); 
+           SensorList.AddSensor("asd", "asasdsd", SensorType.humidity, 20, 20, new Tuple<double, double>(10, 40)); 
+           dataGrid.ItemsSource = SensorList.ListSensors;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -82,37 +55,39 @@ namespace GUI
         
         private void Modify_Click(object sender, RoutedEventArgs e)
         {
-            AddModifySensorWindow ModifySensorWindow = new AddModifySensorWindow();
             var sensorToModify = (Sensor)dataGrid.SelectedItem;
-            ModifySensorWindow.Name1.Text = sensorToModify.Name;
-            ModifySensorWindow.Name2.Text = sensorToModify.Description;
+            AddModifySensorWindow ModifySensorWindow = new AddModifySensorWindow((sender as Button).Content.ToString(), sensorToModify);
+            
+            ModifySensorWindow.txtName.Text = sensorToModify.Name;
+            ModifySensorWindow.txtDescription.Text = sensorToModify.Description;
+            ModifySensorWindow.txtType.Text = sensorToModify.Type.ToString();
+            ModifySensorWindow.txtLatitude.Text = sensorToModify.Latitude.ToString();
+            ModifySensorWindow.Name5.Text = sensorToModify.Longtitude.ToString();
+            ModifySensorWindow.Name6.Text = sensorToModify.AcceptableValues.Item1.ToString();
+            ModifySensorWindow.Name7.Text = sensorToModify.AcceptableValues.Item2.ToString();
             //TODO
-            ModifySensorWindow.Name3.Text = sensorToModify.Description;
-            ModifySensorWindow.Name4.Text = sensorToModify.Description;
-            ModifySensorWindow.Name5.Text = sensorToModify.Description;
-            ModifySensorWindow.Name6.Text = sensorToModify.Description;
-            ModifySensorWindow.Name7.Text = sensorToModify.Description;
-            ModifySensorWindow.Name8.Text = sensorToModify.Description;
             ModifySensorWindow.Name9.Text = sensorToModify.Description;
             ModifySensorWindow.Name0.Text = sensorToModify.Description;
+            
             ModifySensorWindow.ShowDialog();
+            dataGrid.Items.Refresh();
+
 
         }
 
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
-            var sensorToRemove = (Sensor)dataGrid.SelectedItem;
-            SensorList.ListSensors.Remove(sensorToRemove);
+            SensorList.Remove((Sensor)dataGrid.SelectedItem);
 
 
-            dataGrid.Items.Refresh();
+            //dataGrid.Items.Refresh();
 
             //dataGrid.Items.Remove(dataGrid.SelectedItem);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            (this.DataContext as MainWindowViewModel).Load();
+            //(this.DataContext as MainWindowViewModel).Load();
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)

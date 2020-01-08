@@ -24,7 +24,7 @@ namespace DormitorySensor
         }
 
        
-        public static void AddSensor(string name, string description, SensorType type, double latitude, double longtitute)
+        public static void AddSensor(string name, string description, sensorType type, double latitude, double longtitute)
         {
             Sensor s = new Sensor(name, description, type, latitude, longtitute);
             listSensors.Add(s);
@@ -37,7 +37,7 @@ namespace DormitorySensor
         }
 
         //
-        public static void Modify(int index, string name, string description, SensorType type, double latitude, double longtitute)
+        public static void Modify(int index, string name, string description, sensorType type, double latitude, double longtitute)
         {
             //TODO
         }

@@ -35,7 +35,8 @@ namespace GUI
 
             this.DataContext = new MainWindowViewModel();
 
-            
+            //Http client is initialized at the start of our app
+            ApiHelper.InitializeClient();
         }
 
         public void InitMap()
@@ -73,7 +74,7 @@ namespace GUI
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            (this.DataContext as MainWindowViewModel).AddSensor("asd2", "asasdsd", SensorType.humidity, 20, 20);
+            (this.DataContext as MainWindowViewModel).AddSensor("asd2", "asasdsd", sensorType.humidity, 20, 20);
             AddModifySensorWindow AddSensorWindow = new AddModifySensorWindow();
             AddSensorWindow.ShowDialog();
         }
@@ -112,6 +113,19 @@ namespace GUI
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             (this.DataContext as MainWindowViewModel).Load();
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private async void loadSensorInfo_Click(object sender, RoutedEventArgs e)
+        {
+            var sensorInfo = await SensorProcessor.LoadSensorInfo();
+            sensorDateText.Text = $"Sensor date {sensorInfo.timeStamp}";
+            sensorTypeText.Text = $"Sensor type {sensorInfo.valueType}";
+            //sunsetText.Text = $"Sunset is at {sunInfo.measure_type_of_value}";
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DormitorySensor
 {
-    public enum SensorType
+    public enum sensorType
     {
         temperature,
         humidity,
@@ -19,18 +19,19 @@ namespace DormitorySensor
         #region Members
         private string name;
         private string description;
-        private SensorType type;
+        private sensorType type;
         private double latitude;
         private double longtitude;
-        private double value;
+       // private double value;
         private Tuple<double, double> acceptableValues;
         private bool tickOf;
+       
 
         #endregion
 
         #region Ctors
 
-        public Sensor(string name, string description, SensorType type, double latitude, double longtitute)
+        public Sensor(string name, string description, sensorType type, double latitude, double longtitute)
         {
             Name = name;
             Description = description;
@@ -50,6 +51,10 @@ namespace DormitorySensor
         #endregion
 
         #region Props
+        public Guid sensorId { get; set; }
+        public DateTime timeStamp { get; set; }
+        public string value { get; set; }
+        public string valueType{ get; set; }
 
         public string Name
         {
@@ -64,7 +69,7 @@ namespace DormitorySensor
             set { description = value; }
         }
 
-        public SensorType Type
+        public sensorType Type
         {
             get { return type; }
             set { type = value; }
@@ -99,7 +104,7 @@ namespace DormitorySensor
                 PrintSensorInfo();
             }
         }
-        public Sensor ModifySensor(string name, string description, SensorType type, double latitude, double longtitute)
+        public Sensor ModifySensor(string name, string description, sensorType type, double latitude, double longtitute)
         {
             //not ready 
             return null;

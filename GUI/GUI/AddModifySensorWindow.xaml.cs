@@ -28,7 +28,7 @@ namespace GUI
         private void ConfirmAdd_Click(object sender, RoutedEventArgs e)
         {
 
-            SensorList.AddSensor(Name1.Text, Name2.Text,SensorType.noiseSensor, 0, 0);
+            SensorList.AddSensor(Name1.Text, Name2.Text,sensorType.noiseSensor, 0, 0);
             ClearUserInput();
         }
 

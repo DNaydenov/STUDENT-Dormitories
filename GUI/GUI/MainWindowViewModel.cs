@@ -20,17 +20,17 @@ namespace GUI
 
         public MainWindowViewModel()
         {
-            SensorList.AddSensor("asd", "asd", SensorType.humidity, 20, 20);
-            SensorList.AddSensor("asd", "asasdsd", SensorType.humidity, 20, 20);
+            SensorList.AddSensor("asd", "asd", sensorType.humidity, 20, 20);
+            SensorList.AddSensor("asd", "asasdsd", sensorType.humidity, 20, 20);
         }
 
         public void Load()
         {
-            AddSensor("asd", "asd", SensorType.humidity, 20, 20);
+            AddSensor("asd", "asd", sensorType.humidity, 20, 20);
            // AddSensor("asd2", "asasdsd", SensorType.humidity, 20, 20);
         }
 
-        public void AddSensor(string name, string description, SensorType type, double latitude, double longtitute)
+        public void AddSensor(string name, string description, sensorType type, double latitude, double longtitute)
         {
             Sensor s = new Sensor(name, description, type, latitude, longtitute);
             ListSensors.Add(s);

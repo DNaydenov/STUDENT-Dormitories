@@ -9,3 +9,12 @@ C:\Users\User\STUDENT-Dormitories\GUI\DormitorySensor\obj\Debug\DormitorySensor.
 C:\Users\User\STUDENT-Dormitories\GUI\DormitorySensor\obj\Debug\DormitorySensor.csproj.CoreCompileInputs.cache
 C:\Users\User\STUDENT-Dormitories\GUI\DormitorySensor\obj\Debug\DormitorySensor.dll
 C:\Users\User\STUDENT-Dormitories\GUI\DormitorySensor\obj\Debug\DormitorySensor.pdb
+C:\Users\admin071018\source\repos\STUDENT-Dormitories\GUI\DormitorySensor\bin\Debug\DormitorySensor.dll
+C:\Users\admin071018\source\repos\STUDENT-Dormitories\GUI\DormitorySensor\bin\Debug\DormitorySensor.pdb
+C:\Users\admin071018\source\repos\STUDENT-Dormitories\GUI\DormitorySensor\bin\Debug\System.Net.Http.Extensions.dll
+C:\Users\admin071018\source\repos\STUDENT-Dormitories\GUI\DormitorySensor\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\admin071018\source\repos\STUDENT-Dormitories\GUI\DormitorySensor\bin\Debug\System.Net.Http.Primitives.dll
+C:\Users\admin071018\source\repos\STUDENT-Dormitories\GUI\DormitorySensor\bin\Debug\Newtonsoft.Json.dll
+C:\Users\admin071018\source\repos\STUDENT-Dormitories\GUI\DormitorySensor\obj\Debug\DormitorySensor.csproj.CopyComplete
+C:\Users\admin071018\source\repos\STUDENT-Dormitories\GUI\DormitorySensor\obj\Debug\DormitorySensor.dll
+C:\Users\admin071018\source\repos\STUDENT-Dormitories\GUI\DormitorySensor\obj\Debug\DormitorySensor.pdb

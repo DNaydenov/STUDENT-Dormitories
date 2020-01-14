@@ -20,10 +20,10 @@ namespace DormitorySensor
         private string name;
         private string description;
         private sensorType type;
-        private double latitude;
+        private (double latitude, double longtitude) location;
         private double longtitude;
        // private double value;
-        private Tuple<double, double> acceptableValues;
+        private (double min, double max) acceptableValues;
         private bool tickOf;
        
 
@@ -33,25 +33,24 @@ namespace DormitorySensor
 
         #region Ctors
 
-        public Sensor(string name, string description, sensorType type, double latitude, double longtitute, Tuple<double, double> acceptableValues)
+        public Sensor(string name, string description, sensorType type, (double latitude, double longtitude) location, (double min, double max) acceptableValues)
         {
             Name = name;
             Description = description;
             Type = type;
-            Latitude = latitude;
-            Longtitude = longtitute;
+            Location = location;
            // AcceptableValues = acceptableValues;
             Id = ID++;
             
         }
-        public Sensor(Sensor sens) : this(sens.name, sens.description, sens.type, sens.latitude, sens.longtitude, sens.acceptableValues)
-        {
+        //public Sensor(Sensor sens) : this(sens.name, sens.description, sens.type, sens.latitude, sens.longtitude, sens.acceptableValues)
+        //{
 
-        }
-        public Sensor() : this(null, null, 0, 0.0, 0.0, null)//don't sure have to exist
-        {
+        //}
+        //public Sensor() : this(null, null, 0, 0.0, 0.0, null)//don't sure have to exist
+        //{
 
-        }
+        //}
         #endregion
 
         #region Props
@@ -81,16 +80,10 @@ namespace DormitorySensor
             set { type = value; }
         }
 
-        public double Latitude
+        public (double latitude, double longtitude) Location
         {
-            get { return latitude; }
-            set { latitude = value; }
-        }
-
-        public double Longtitude
-        {
-            get { return longtitude; }
-            set { longtitude = value; }
+            get { return location; }
+            set { location = value; }
         }
 
         public Tuple<double, double> AcceptableValues
@@ -107,22 +100,22 @@ namespace DormitorySensor
 
         #endregion
 
-        public void PrintSensorInfo()
-        {
-            Console.WriteLine("Name: {0} Description: {1} Type: {2} Latitude: {3} Longtitude: {4}", name, description, type, latitude, longtitude);
-        }
+        //public void PrintSensorInfo()
+        //{
+        //    Console.WriteLine("Name: {0} Description: {1} Type: {2} Latitude: {3} Longtitude: {4}", name, description, type,location);
+        //}
 
-        public void PrintAll(List<Sensor> sensors)
-        {
-            foreach (var item in sensors)
-            {
-                PrintSensorInfo();
-            }
-        }
-        public Sensor ModifySensor(string name, string description, sensorType type, double latitude, double longtitute)
-        {
-            //not ready 
-            return null;
-        }
+        //public void PrintAll(List<Sensor> sensors)
+        //{
+        //    foreach (var item in sensors)
+        //    {
+        //        PrintSensorInfo();
+        //    }
+        //}
+        //public Sensor ModifySensor(string name, string description, sensorType type, double latitude, double longtitute)
+        //{
+        //    //not ready 
+        //    return null;
+        //}
     }
 }

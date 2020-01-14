@@ -53,10 +53,10 @@ namespace GUI
         private void ConfirmAdd_Click(object sender, RoutedEventArgs e)
         {
             //call API and get value 
-            SensorList.AddSensor(txtName.Text, txtDescription.Text, sensorType.noiseSensor, 0, 0, new Tuple<double, double>(Double.Parse(txtName6.Text), Double.Parse(txtName7.Text)));
+            SensorList.AddSensor(txtName.Text, txtDescription.Text, sensorType.noiseSensor, (0, 0),
+                (Double.Parse(txtName6.Text), Double.Parse(txtName7.Text)));
+            
 
-           
-            //ClearUserInput();
 
         }
 
@@ -80,9 +80,8 @@ namespace GUI
 
         private void ConfirmModify_Click(object sender, RoutedEventArgs e)
         {
-        //        SensorList.Modify(sensor.Id, txtName.Text, txtDescription.Text, sensorType.noiseSensor, 0, 0,
-        //        new Tuple<double, double>(Double.Parse(Name6.Text), Double.Parse(Name7.Text)));
+            SensorList.Modify(sensor.Id, txtName.Text, txtDescription.Text, sensorType.noiseSensor, (0, 0), 0, 
+            new Tuple<double, double>(Double.Parse(txtName6.Text), Double.Parse(txtName7.Text)));
         }
-
     }
 }

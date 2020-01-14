@@ -24,9 +24,9 @@ namespace DormitorySensor
             set { listSensors = value; }
         }
 
-        public static void AddSensor(string name, string description, sensorType type, double latitude, double longtitute, Tuple<double,double> acceptableValues)
+        public static void AddSensor(string name, string description, sensorType type, (double latitude, double longtitude) location, (double min, double max) acceptableValues)
         {
-            Sensor s = new Sensor(name, description, type, latitude, longtitute, acceptableValues);
+            Sensor s = new Sensor(name, description, type, location, acceptableValues);
             listSensors.Add(s);
         }
 
@@ -36,14 +36,13 @@ namespace DormitorySensor
         }
 
 
-        public static void Modify(int index, string name, string description, sensorType type, double latitude, double longtitute, int id ,Tuple<double, double> acceptableValues)
+        public static void Modify(int index, string name, string description, sensorType type, (double latitude, double longtitude) location, int id ,Tuple<double, double> acceptableValues)
         {
             var sensorToModify = listSensors.Where(item => item.Id == id).FirstOrDefault();
             sensorToModify.Name = name;
             sensorToModify.Description = description;
             sensorToModify.Type = type;
-            sensorToModify.Latitude = latitude;
-            sensorToModify.Longtitude = longtitute;
+            sensorToModify.Location = location;
             //sensorToModify.AcceptableValues = acceptableValues;
         }
     }

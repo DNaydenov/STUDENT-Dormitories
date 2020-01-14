@@ -33,9 +33,9 @@ namespace GUI
               //AddSensor("asd2", "asasdsd", sensorType.humidity, 20, 20, new Tuple<double, double>(Double.Parse(Name6.Text), Double.Parse(Name7.Text)));
         }
 
-        public void AddSensor(string name, string description, sensorType type, double latitude, double longtitute, Tuple<double, double> acceptableValues)
+        public void AddSensor(string name, string description, sensorType type, (double latitude, double longtitude) location, (double min, double max) acceptableValues)
         {
-            Sensor s = new Sensor(name, description, type, latitude, longtitute, acceptableValues);
+            Sensor s = new Sensor(name, description, type, location, acceptableValues);
             ListSensors.Add(s);
         }
     }

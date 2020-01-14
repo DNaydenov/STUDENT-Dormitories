@@ -47,16 +47,17 @@ namespace GUI
 
         public void InitViewAllList(DataGrid dataGrid)
         {
-           SensorList.AddSensor("asd", "asd", sensorType.humidity, 20, 20, new Tuple<double,double> (10,40)); 
-           SensorList.AddSensor("asd", "asasdsd", sensorType.humidity, 20, 20, new Tuple<double, double>(10, 40)); 
+           SensorList.AddSensor("asd", "asd", sensorType.humidity, (20, 20), (10,40)); 
+           SensorList.AddSensor("asd", "asasdsd", sensorType.humidity, (20, 20), (10, 40)); 
            dataGrid.ItemsSource = SensorList.ListSensors;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-        //    (this.DataContext as MainWindowViewModel).AddSensor("asd2", "asasdsd", sensorType.humidity, 20, 20,);
-        //    AddModifySensorWindow AddSensorWindow = new AddModifySensorWindow();
-        //    AddSensorWindow.ShowDialog();
+            //(this.DataContext as MainWindowViewModel).AddSensor("asd2", "asasdsd", sensorType.humidity, 20, 20, new Tuple<double, double>(0,50));
+            AddModifySensorWindow AddSensorWindow = new AddModifySensorWindow((sender as Button).Content.ToString());
+            AddSensorWindow.ShowDialog();
+            SensorList.ListSensors.Last();
         }
 
         
@@ -68,8 +69,8 @@ namespace GUI
             ModifySensorWindow.txtName.Text = sensorToModify.Name;
             ModifySensorWindow.txtDescription.Text = sensorToModify.Description;
             ModifySensorWindow.txtType.Text = sensorToModify.Type.ToString();
-            ModifySensorWindow.txtLatitude.Text = sensorToModify.Latitude.ToString();
-            ModifySensorWindow.txtName5.Text = sensorToModify.Longtitude.ToString();
+            ModifySensorWindow.txtLatitude.Text = sensorToModify.Location.latitude.ToString();
+            ModifySensorWindow.txtName5.Text = sensorToModify.Location.longtitude.ToString();
             ModifySensorWindow.txtName6.Text = sensorToModify.AcceptableValues.Item1.ToString();
             ModifySensorWindow.txtName7.Text = sensorToModify.AcceptableValues.Item2.ToString();
             //TODO             

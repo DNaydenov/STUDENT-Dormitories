@@ -1,6 +1,7 @@
 ﻿using DormitorySensor;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,16 +21,43 @@ namespace GUI
     /// </summary>
     public partial class AddModifySensorWindow : Window
     {
-        public AddModifySensorWindow()
+        Sensor sensor = null;
+
+        public AddModifySensorWindow(string name, Sensor sensor = null)
         {
             InitializeComponent();
+            Title = name;
+            ActivateButton(name);
+            if (sensor != null)
+            {
+                this.sensor = sensor;
+            }
+        }
+
+        private void ActivateButton(string name)
+        {
+            if (confirmAdd.Name.Contains(name))
+            {
+                confirmAdd.Visibility = Visibility.Visible;
+            }
+            else if (confirmModify.Name.Contains(name))
+            {
+                confirmModify.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Debug.Assert(true, "invalid button");
+            }
         }
 
         private void ConfirmAdd_Click(object sender, RoutedEventArgs e)
         {
+            //call API and get value 
+            SensorList.AddSensor(txtName.Text, txtDescription.Text, sensorType.noiseSensor, 0, 0, new Tuple<double, double>(Double.Parse(Name6.Text), Double.Parse(Name7.Text)));
 
-            SensorList.AddSensor(Name1.Text, Name2.Text,SensorType.noiseSensor, 0, 0);
-            ClearUserInput();
+           
+            //ClearUserInput();
+
         }
 
         private void ClearAddData_Click(object sender, RoutedEventArgs e)
@@ -37,23 +65,26 @@ namespace GUI
             ClearUserInput();
         }
 
-        private void CancelAdd_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
+
 
         private void ClearUserInput()
         {
             Name0.Clear();
-            Name1.Clear();
-            Name2.Clear();
-            Name3.Clear();
-            Name4.Clear();
+            txtName.Clear();
+            txtDescription.Clear();
+            txtType.Clear();
+            txtLatitude.Clear();
             Name5.Clear();
             Name6.Clear();
             Name7.Clear();
-            Name8.Clear();
             Name9.Clear();
         }
+
+        private void ConfirmModify_Click(object sender, RoutedEventArgs e)
+        {
+        //        SensorList.Modify(sensor.Id, txtName.Text, txtDescription.Text, sensorType.noiseSensor, 0, 0,
+        //        new Tuple<double, double>(Double.Parse(Name6.Text), Double.Parse(Name7.Text)));
+        }
+
     }
 }

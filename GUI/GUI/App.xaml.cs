@@ -13,5 +13,7 @@ namespace GUI
     /// </summary>
     public partial class App : Application
     {
+        //event handler for user friendly window when something crash
+        
     }
 }

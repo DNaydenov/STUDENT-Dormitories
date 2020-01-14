@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DormitorySensor
 {
-    public enum SensorType
+    public enum sensorType
     {
         temperature,
         humidity,
@@ -19,37 +19,48 @@ namespace DormitorySensor
         #region Members
         private string name;
         private string description;
-        private SensorType type;
+        private sensorType type;
         private double latitude;
         private double longtitude;
-        private double value;
+       // private double value;
         private Tuple<double, double> acceptableValues;
         private bool tickOf;
+       
+
+        private static int ID=0;
 
         #endregion
 
         #region Ctors
 
-        public Sensor(string name, string description, SensorType type, double latitude, double longtitute)
+        public Sensor(string name, string description, sensorType type, double latitude, double longtitute, Tuple<double, double> acceptableValues)
         {
             Name = name;
             Description = description;
             Type = type;
             Latitude = latitude;
             Longtitude = longtitute;
-
+           // AcceptableValues = acceptableValues;
+            Id = ID++;
+            
         }
-        public Sensor(Sensor sens) : this(sens.name, sens.description, sens.type, sens.latitude, sens.longtitude)
+        public Sensor(Sensor sens) : this(sens.name, sens.description, sens.type, sens.latitude, sens.longtitude, sens.acceptableValues)
         {
 
         }
-        public Sensor() : this(null, null, 0, 0.0, 0.0)
+        public Sensor() : this(null, null, 0, 0.0, 0.0, null)//don't sure have to exist
         {
 
         }
         #endregion
 
         #region Props
+        public Guid sensorId { get; set; }
+        public DateTime timeStamp { get; set; }
+        public string value { get; set; }
+        public string valueType{ get; set; }
+
+        public int Id { get; }
 
         public string Name
         {
@@ -64,7 +75,7 @@ namespace DormitorySensor
             set { description = value; }
         }
 
-        public SensorType Type
+        public sensorType Type
         {
             get { return type; }
             set { type = value; }
@@ -82,10 +93,19 @@ namespace DormitorySensor
             set { longtitude = value; }
         }
 
+        public Tuple<double, double> AcceptableValues
+        {
+              get { return new Tuple<double, double>(acceptableValues.Item1,acceptableValues.Item2); }
+        //    set
+        //    {
+        //        if(value.Item1 < value.Item2)
+        //        {
+        //            acceptableValues = new Tuple<double, double>(value.Item1, value.Item2);
+        //        }
+        //    }
+        }
+
         #endregion
-
-
-
 
         public void PrintSensorInfo()
         {
@@ -99,7 +119,7 @@ namespace DormitorySensor
                 PrintSensorInfo();
             }
         }
-        public Sensor ModifySensor(string name, string description, SensorType type, double latitude, double longtitute)
+        public Sensor ModifySensor(string name, string description, sensorType type, double latitude, double longtitute)
         {
             //not ready 
             return null;

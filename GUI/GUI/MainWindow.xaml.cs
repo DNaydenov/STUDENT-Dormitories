@@ -1,8 +1,4 @@
 ﻿using DormitorySensor;
-using GMap.NET;
-using GMap.NET.MapProviders;
-using GMap.NET.WindowsForms;
-using GMap.NET.WindowsPresentation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Maps.MapControl.WPF;
 
 namespace GUI
 {
@@ -29,13 +26,23 @@ namespace GUI
         {
             
             InitializeComponent();
-
+            InitMap();
             InitViewAllList(dataGrid);
 
             //this.DataContext = new MainWindowViewModel();
 
             //Http client is initialized at the start of our app
             ApiHelper.InitializeClient();
+        }
+        public void InitMap()
+        {
+            
+            Pushpin pin1 = new Pushpin();
+            pin1.Location = new Location(42.698334, 23.319941);
+            BingMap.Children.Add(pin1);
+            BingMap.ZoomLevel = 9;
+            //Sofia location
+            BingMap.Center = new Location(42.698334, 23.319941);
         }
 
         public void InitViewAllList(DataGrid dataGrid)
@@ -62,12 +69,12 @@ namespace GUI
             ModifySensorWindow.txtDescription.Text = sensorToModify.Description;
             ModifySensorWindow.txtType.Text = sensorToModify.Type.ToString();
             ModifySensorWindow.txtLatitude.Text = sensorToModify.Latitude.ToString();
-            ModifySensorWindow.Name5.Text = sensorToModify.Longtitude.ToString();
-            ModifySensorWindow.Name6.Text = sensorToModify.AcceptableValues.Item1.ToString();
-            ModifySensorWindow.Name7.Text = sensorToModify.AcceptableValues.Item2.ToString();
-            //TODO
-            ModifySensorWindow.Name9.Text = sensorToModify.Description;
-            ModifySensorWindow.Name0.Text = sensorToModify.Description;
+            ModifySensorWindow.txtName5.Text = sensorToModify.Longtitude.ToString();
+            ModifySensorWindow.txtName6.Text = sensorToModify.AcceptableValues.Item1.ToString();
+            ModifySensorWindow.txtName7.Text = sensorToModify.AcceptableValues.Item2.ToString();
+            //TODO             
+            ModifySensorWindow.txtName9.Text = sensorToModify.Description;
+            ModifySensorWindow.txtName0.Text = sensorToModify.Description;
             
             ModifySensorWindow.ShowDialog();
             dataGrid.Items.Refresh();

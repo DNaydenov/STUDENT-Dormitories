@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF" x:Class="GUI.MainWindow"
         xmlns:local="clr-namespace:GUI"
-        xmlns:WindowsPresentation="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation" x:Class="GUI.MainWindow"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
         Title="MainWindow" Height="450" Width="800"  MinHeight="300" MinWidth="550">
@@ -12,20 +12,7 @@
         <!--Closing="Window_Closing"   sloji go do loaded :D -->
         <TabItem Name="MapView" Header="Map view" IsSelected="True">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="86*" />
-                    <ColumnDefinition Width="543*"/>
-                    <ColumnDefinition Width="157*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <!--<WindowsPresentation:GMapControl Name="map" Grid.Column="0"/>-->
-
-
+                <m:Map Name="BingMap" CredentialsProvider="Ot3otvT4DLmDPUiFS6SC~yhCCJXsMfz8yzxrGa_E-QA~AiAehwfjDbOcZr3pz_GGGSxcCLrOTeU04Vjf2psBAHyPDnZ-N9Ps9MCV1h1FSlud"/>
             </Grid>
         </TabItem>
 
@@ -50,9 +37,9 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Button Name="Add" Content="Add" FontSize="20" Grid.Column="0" Width="100" Height="50" Click="Add_Click" />
-                    <Button Name="Modify" Content="Modify" FontSize="20" Grid.Column="1" Width="100" Height="50" Click="Modify_Click" />
-                    <Button Name="Remove" Content="Remove" FontSize="20" Grid.Column="2" Width="100" Height="50" Click="Remove_Click" />
+                    <Button Name="btnAdd" Content="Add" FontSize="20" Grid.Column="0" Width="100" Height="50" Click="Add_Click" />
+                    <Button Name="btnModify" Content="Modify" FontSize="20" Grid.Column="1" Width="100" Height="50" Click="Modify_Click" />
+                    <Button Name="btnRemove" Content="Remove" FontSize="20" Grid.Column="2" Width="100" Height="50" Click="Remove_Click" />
                 </Grid>
 
             </Grid>
@@ -60,7 +47,7 @@
 
         <TabItem Name="GraphicalViewTab" Header="Graphical info" IsSelected="False">
             <Canvas>
-                <Button x:Name="loadSunInfo" Margin="20 20 0 0 " Click="loadSensorInfo_Click" Width="720" >Load Sensor Info </Button>
+                <Button x:Name="btnLoadSunInfo" Content="Load Sensor Info" Margin="20 20 0 0 " Click="loadSensorInfo_Click" Width="720" />
                 <TextBlock x:Name="sensorDateText" Margin="0 50 0 0 "/>
                 <TextBlock x:Name="sensorTypeText" Margin="0 80 0 0"/>
                 

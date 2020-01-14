@@ -36,13 +36,13 @@ namespace GUI
 
         private void ActivateButton(string name)
         {
-            if (confirmAdd.Name.Contains(name))
+            if (btnConfirmAdd.Name.Contains(name))
             {
-                confirmAdd.Visibility = Visibility.Visible;
+                btnConfirmAdd.Visibility = Visibility.Visible;
             }
-            else if (confirmModify.Name.Contains(name))
+            else if (btnConfirmModify.Name.Contains(name))
             {
-                confirmModify.Visibility = Visibility.Visible;
+                btnConfirmModify.Visibility = Visibility.Visible;
             }
             else
             {
@@ -53,7 +53,7 @@ namespace GUI
         private void ConfirmAdd_Click(object sender, RoutedEventArgs e)
         {
             //call API and get value 
-            SensorList.AddSensor(txtName.Text, txtDescription.Text, sensorType.noiseSensor, 0, 0, new Tuple<double, double>(Double.Parse(Name6.Text), Double.Parse(Name7.Text)));
+            SensorList.AddSensor(txtName.Text, txtDescription.Text, sensorType.noiseSensor, 0, 0, new Tuple<double, double>(Double.Parse(txtName6.Text), Double.Parse(txtName7.Text)));
 
            
             //ClearUserInput();
@@ -65,19 +65,17 @@ namespace GUI
             ClearUserInput();
         }
 
-
-
         private void ClearUserInput()
         {
-            Name0.Clear();
+            txtName0.Clear();
             txtName.Clear();
             txtDescription.Clear();
             txtType.Clear();
             txtLatitude.Clear();
-            Name5.Clear();
-            Name6.Clear();
-            Name7.Clear();
-            Name9.Clear();
+            txtName5.Clear();
+            txtName6.Clear();
+            txtName7.Clear();
+            txtName9.Clear();
         }
 
         private void ConfirmModify_Click(object sender, RoutedEventArgs e)

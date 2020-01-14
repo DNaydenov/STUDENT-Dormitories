@@ -36,11 +36,11 @@
         <TextBox Name="txtDescription" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" />
         <TextBox Name="txtType" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="2" VerticalContentAlignment="Center" />
         <TextBox Name="txtLatitude" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="3" VerticalContentAlignment="Center" />
-        <TextBox Name="Name5" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="4" VerticalContentAlignment="Center" />
-        <TextBox Name="Name6" Height="50" Width="120" FontSize="18" Grid.Column="3" Grid.Row="0" VerticalContentAlignment="Center" />
-        <TextBox Name="Name7" Height="50" Width="120" FontSize="18" Grid.Column="3" Grid.Row="1" VerticalContentAlignment="Center" />
-        <TextBox Name="Name9" Height="50" Width="120" FontSize="18" Grid.Column="3" Grid.Row="3" VerticalContentAlignment="Center" />
-        <TextBox Name="Name0" Height="50" Width="120" FontSize="18" Grid.Column="3" Grid.Row="4" VerticalContentAlignment="Center" />
+        <TextBox Name="txtName5" Height="50" Width="120" FontSize="18" Grid.Column="1" Grid.Row="4" VerticalContentAlignment="Center" />
+        <TextBox Name="txtName6" Height="50" Width="120" FontSize="18" Grid.Column="3" Grid.Row="0" VerticalContentAlignment="Center" />
+        <TextBox Name="txtName7" Height="50" Width="120" FontSize="18" Grid.Column="3" Grid.Row="1" VerticalContentAlignment="Center" />
+        <TextBox Name="txtName9" Height="50" Width="120" FontSize="18" Grid.Column="3" Grid.Row="3" VerticalContentAlignment="Center" />
+        <TextBox Name="txtName0" Height="50" Width="120" FontSize="18" Grid.Column="3" Grid.Row="4" VerticalContentAlignment="Center" />
 
         <Grid Grid.ColumnSpan="4" Grid.Row="5" >
             <Grid.ColumnDefinitions>
@@ -52,10 +52,10 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Button Name="confirmAdd" Content="Add Sensor" IsCancel="True" Visibility="Hidden" Height="60" Width="180" FontSize="24" Grid.Column="0" Grid.Row="0" Click="ConfirmAdd_Click"/>
-            <Button Name="confirmModify" Content="Modify Sensor" IsCancel="True" Visibility="Hidden" Height="60" Width="180" FontSize="24" Grid.Column="0" Grid.Row="0" Click="ConfirmModify_Click" />
-            <Button Name="clearAddData" Content="Clear Data" Height="60" Width="180" FontSize="24" Grid.Column="1" Grid.Row="0" Click="ClearAddData_Click" />
-            <Button Name="cancelAdd" Content="Cancel" IsCancel="True" Height="60" Width="180" FontSize="24" Grid.Column="2" Grid.Row="0" />   
+            <Button Name="btnConfirmAdd" Content="Add Sensor" IsCancel="True" Visibility="Hidden" Height="60" Width="180" FontSize="24" Grid.Column="0" Grid.Row="0" Click="ConfirmAdd_Click"/>
+            <Button Name="btnConfirmModify" Content="Modify Sensor" IsCancel="True" Visibility="Hidden" Height="60" Width="180" FontSize="24" Grid.Column="0" Grid.Row="0" Click="ConfirmModify_Click" />
+            <Button Name="btnClearAddData" Content="Clear Data" Height="60" Width="180" FontSize="24" Grid.Column="1" Grid.Row="0" Click="ClearAddData_Click" />
+            <Button Name="btnCancelAdd" Content="Cancel" IsCancel="True" Height="60" Width="180" FontSize="24" Grid.Column="2" Grid.Row="0" />   
         </Grid>
 
     </Grid>

@@ -10,16 +10,16 @@ namespace DormitorySensor
 {
     public class SensorProcessor
     {
-        public static async Task<Sensor> LoadSensorInfo()
+        public static async Task<int> LoadSensorInfo(string ID, string sensorType)
         {
-            string url = "api/sensor?sensorId=b549c8fb-4538-4cf7-9d8f-39ac27b27f25&sensorType=temperature";
+            string url = string.Format("api/sensor?sensorId={0}&sensorType={1}",ID,sensorType);
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
             {
                 if (response.IsSuccessStatusCode)
                 {
                     //var jsonResponse = await response.Content.ReadAsStringAsync();
                     Sensor result = await response.Content.ReadAsAsync<Sensor>();
-                    return result;
+                    return result.Value;
                 }
                 else
                 {

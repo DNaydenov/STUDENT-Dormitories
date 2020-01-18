@@ -27,6 +27,7 @@
                         <!--<DataGridTextColumn Header="No." Binding="{Binding Path=no}" Width="60" MinWidth="30" />-->
                         <DataGridTextColumn Header="Name" IsReadOnly="True" Binding="{Binding Path=Name}" Width="150" MinWidth="30" />
                         <DataGridTextColumn Header="Description" IsReadOnly="True" Binding="{Binding Path=Description}" Width="*" MinWidth="30" />
+                        <DataGridTextColumn Header="Value" IsReadOnly="True" Binding="{Binding Path=Value}" Width="*" MinWidth="30" />
                         <!--<DataGridTextColumn Header="Cur value" Binding="{Binding Path=curValue}" Width="120" MinWidth="30" />
                         <DataGridTextColumn Header="Graphics" Binding="{Binding Path=graphics}" Width="*" MinWidth="30" />-->
                     </DataGrid.Columns>

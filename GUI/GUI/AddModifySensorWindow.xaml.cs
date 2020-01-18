@@ -50,11 +50,14 @@ namespace GUI
             }
         }
 
-        private void ConfirmAdd_Click(object sender, RoutedEventArgs e)
+        private async void ConfirmAdd_Click(object sender, RoutedEventArgs e)
         {
             //call API and get value 
-            SensorList.AddSensor(txtName.Text, txtDescription.Text, sensorType.noiseSensor, (0, 0),
-                (Double.Parse(txtName6.Text), Double.Parse(txtName7.Text)));
+            var guid = Guid.NewGuid();
+            var type = GetSensorType(CBoxType.SelectedIndex);
+            var sensorValue = await SensorProcessor.LoadSensorInfo(guid.ToString(),type.ToString() );
+            SensorList.AddSensor(txtName.Text, txtDescription.Text, sensorValue, type, (0, 0),
+                (Double.Parse(txtMinValue.Text), Double.Parse(txtMaxValue.Text)));
             
 
 
@@ -67,21 +70,50 @@ namespace GUI
 
         private void ClearUserInput()
         {
-            txtName0.Clear();
             txtName.Clear();
             txtDescription.Clear();
-            txtType.Clear();
             txtLatitude.Clear();
-            txtName5.Clear();
-            txtName6.Clear();
-            txtName7.Clear();
-            txtName9.Clear();
+            txtLongtitude.Clear();
+            txtMinValue.Clear();
+            txtMaxValue.Clear();
         }
 
         private void ConfirmModify_Click(object sender, RoutedEventArgs e)
         {
-            SensorList.Modify(sensor.Id, txtName.Text, txtDescription.Text, sensorType.noiseSensor, (0, 0), 0, 
-            new Tuple<double, double>(Double.Parse(txtName6.Text), Double.Parse(txtName7.Text)));
+            Enum.TryParse(CBoxType.SelectedItem.ToString(), out sensorType myStatus);
+            SensorList.Modify(sensor.Id, txtName.Text, txtDescription.Text, myStatus, (0, 0),
+            (Double.Parse(txtMinValue.Text), Double.Parse(txtMaxValue.Text)));
+        }
+
+        private sensorType GetSensorType(int index)
+        {
+            sensorType sensorType;
+            switch (index)
+            {
+                case 0:
+                    sensorType = sensorType.Temperature;
+                    break;
+                case 1:
+                    sensorType = sensorType.Humidity;
+                    break;
+
+                case 2:
+                    sensorType = sensorType.ElPowerConsumption;
+                    break;
+
+                case 3:
+                    sensorType = sensorType.WindowOrDoorSensor;
+                    break;
+
+                case 4:
+                    sensorType = sensorType.Noise;
+                    break;
+
+                default:
+                    sensorType = sensorType.None;
+                    break;
+            }
+            return sensorType;
         }
     }
 }

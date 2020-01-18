@@ -8,11 +8,12 @@ namespace DormitorySensor
 {
     public enum sensorType
     {
-        temperature,
-        humidity,
-        elPowerConsumption,
-        windowSensor, // if possible another representation, ex. bool windowSensor (true/false)
-        noiseSensor
+        Temperature,
+        Humidity,
+        ElPowerConsumption,
+        WindowOrDoorSensor, // if possible another representation, ex. bool windowSensor (true/false)
+        Noise,
+        None
     }
     public class Sensor
     {
@@ -20,8 +21,7 @@ namespace DormitorySensor
         private string name;
         private string description;
         private sensorType type;
-        private (double latitude, double longtitude) location;
-        private double longtitude;
+        private (double latitude, double lonsgtitude) location;
        // private double value;
         private (double min, double max) acceptableValues;
         private bool tickOf;
@@ -33,10 +33,11 @@ namespace DormitorySensor
 
         #region Ctors
 
-        public Sensor(string name, string description, sensorType type, (double latitude, double longtitude) location, (double min, double max) acceptableValues)
+        public Sensor(string name, string description, int value, sensorType type, (double latitude, double longtitude) location, (double min, double max) acceptableValues)
         {
             Name = name;
             Description = description;
+            Value = value;
             Type = type;
             Location = location;
            // AcceptableValues = acceptableValues;
@@ -54,10 +55,10 @@ namespace DormitorySensor
         #endregion
 
         #region Props
-        public Guid sensorId { get; set; }
-        public DateTime timeStamp { get; set; }
-        public string value { get; set; }
-        public string valueType{ get; set; }
+        public Guid SensorId { get; set; }
+        public DateTime TimeStamp { get; set; }
+        public int Value { get; set; }
+        public string ValueType{ get; set; }
 
         public int Id { get; }
 
@@ -86,16 +87,21 @@ namespace DormitorySensor
             set { location = value; }
         }
 
-        public Tuple<double, double> AcceptableValues
+        public (double min, double max) AcceptableValues
         {
-              get { return new Tuple<double, double>(acceptableValues.Item1,acceptableValues.Item2); }
-        //    set
-        //    {
-        //        if(value.Item1 < value.Item2)
-        //        {
-        //            acceptableValues = new Tuple<double, double>(value.Item1, value.Item2);
-        //        }
-        //    }
+              get { return (acceptableValues.min, acceptableValues.max); }
+            set
+            {
+                if (value.min< value.max)
+                {
+                    acceptableValues = (value.min, value.max);
+                }
+                else
+                {
+                    acceptableValues = (value.max, value.min);
+
+                }
+            }
         }
 
         #endregion

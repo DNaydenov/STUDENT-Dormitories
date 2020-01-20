@@ -27,40 +27,37 @@ namespace GUI
         {
             InitializeComponent();
             InitMap();
-            InitViewAllList(dataGrid);
-
-            //this.DataContext = new MainWindowViewModel();
-
             //Http client is initialized at the start of our app
             ApiHelper.InitializeClient();
         }
         public void InitMap()
         {
-            
-            Pushpin pin1 = new Pushpin();
-            pin1.Location = new Location(42.698334, 23.319941);
-            BingMap.Children.Add(pin1);
             BingMap.ZoomLevel = 9;
             //Sofia location
             BingMap.Center = new Location(42.698334, 23.319941);
         }
 
-        public void InitViewAllList(DataGrid dataGrid)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-           //SensorList.AddSensor("asd", "asd", sensorType.humidity, (20, 20), (10,40)); 
-           //SensorList.AddSensor("asd", "asasdsd", sensorType.humidity, (20, 20), (10, 40)); 
-           dataGrid.ItemsSource = SensorList.ListSensors;
+            SensorList.LoadXmlFile();
+            dataGrid.ItemsSource = SensorList.ListSensors;
+            foreach(var location in SensorList.ListSensors.Select(x => new Location(x.Location.latitude,x.Location.longtitude)))
+            {
+                AddPushpinToMap(location);
+            }
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            SensorList.SaveSensorListToXmlFile();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            //(this.DataContext as MainWindowViewModel).AddSensor("asd2", "asasdsd", sensorType.humidity, 20, 20, new Tuple<double, double>(0,50));
             AddModifySensorWindow AddSensorWindow = new AddModifySensorWindow((sender as Button).Content.ToString());
             AddSensorWindow.ShowDialog();
             var pinLocation = SensorList.ListSensors.Last().Location;
-            Pushpin pin1 = new Pushpin();
-            pin1.Location = new Location(pinLocation.latitude, pinLocation.longtitude);
-            BingMap.Children.Add(pin1);
+            AddPushpinToMap(new Location(pinLocation.latitude, pinLocation.latitude));
         }
 
         
@@ -81,6 +78,7 @@ namespace GUI
             var oldLocation = new Location(sensorToModify.Location.latitude, sensorToModify.Location.longtitude);
             ModifySensorWindow.ShowDialog();
             var newLocation = new Location(sensorToModify.Location.latitude, sensorToModify.Location.longtitude);
+
             if (!oldLocation.Equals(newLocation))
             {
                 RelocatePin(oldLocation, newLocation);
@@ -92,9 +90,11 @@ namespace GUI
             SensorList.Remove((Sensor)dataGrid.SelectedItem);
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void AddPushpinToMap(Location location)
         {
-            //(this.DataContext as MainWindowViewModel).Load();
+            Pushpin newPin = new Pushpin();
+            newPin.Location = location;
+            BingMap.Children.Add(newPin);
         }
 
         private void RelocatePin(Location oldLocation, Location newLocation)
@@ -102,12 +102,7 @@ namespace GUI
             var oldPin = BingMap.Children.OfType<Pushpin>()
                 .Where(x => x.Location.Latitude == oldLocation.Latitude && x.Location.Longitude == oldLocation.Longitude).FirstOrDefault();
             BingMap.Children.Remove(oldPin);
-
-            Pushpin newPin = new Pushpin()
-            {
-                Location = newLocation
-            };
-            BingMap.Children.Add(newPin);
+            AddPushpinToMap(newLocation);
         }
 
         private async void loadSensorInfo_Click(object sender, RoutedEventArgs e)

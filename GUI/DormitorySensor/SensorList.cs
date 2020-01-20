@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace DormitorySensor
 {
@@ -35,7 +36,6 @@ namespace DormitorySensor
             listSensors.Remove(sensor);
         }
 
-
         public static void Modify(int id, string name, string description, sensorType type, (double latitude, double longtitude) location, (double min, double max) acceptableValues)
         {
             var sensorToModify = listSensors.Where(item => item.Id == id).FirstOrDefault();
@@ -44,6 +44,51 @@ namespace DormitorySensor
             sensorToModify.Type = type;
             sensorToModify.Location = location;
             sensorToModify.AcceptableValues = acceptableValues;
+        }
+
+        public static void SaveSensorListToXmlFile()
+        {
+            XDocument doc = new XDocument();
+            XElement root = new XElement("SensorList");
+            foreach(var sensors in listSensors)
+            {
+                XElement sensor =
+                    new XElement("Sensor",
+                        new XAttribute("Name", sensors.Name),
+                        new XAttribute("Type", sensors.Type.ToString()),
+                        new XAttribute("Value", sensors.Value),
+                        new XAttribute("Description", sensors.Description),
+                            new XElement("Location",
+                                new XAttribute("Latitude", sensors.Location.latitude),
+                                new XAttribute("Longtitude", sensors.Location.longtitude)),
+                            new XElement("AcceptableValues",
+                                new XAttribute("MinValue", sensors.AcceptableValues.min),
+                                new XAttribute("MaxValue", sensors.AcceptableValues.max)));
+                root.Add(sensor);
+            }
+            doc.Add(root);
+            doc.Save("C:\\Users\\User\\Desktop\\Test.xml");
+        }
+
+        public static void LoadXmlFile()
+        {
+            var sensors = XDocument.Load("C:\\Users\\User\\Desktop\\Test.xml").Root.Elements("Sensor");
+
+            foreach(var sensorload in sensors)
+            {
+                var name = sensorload.Attribute("Name").Value;
+                var desc = sensorload.Attribute("Description").Value;
+                var value = int.Parse(sensorload.Attribute("Value").Value);
+                var type = (sensorType)Enum.Parse(typeof(sensorType), sensorload.Attribute("Type").Value);
+                var location = (Double.Parse(sensorload.Element("Location").Attribute("Latitude").Value),
+                                Double.Parse(sensorload.Element("Location").Attribute("Longtitude").Value));
+                var acceptableValues = (Double.Parse(sensorload.Element("AcceptableValues").Attribute("MinValue").Value),
+                                        Double.Parse(sensorload.Element("AcceptableValues").Attribute("MaxValue").Value));
+
+                Sensor sensor = new Sensor(name, desc, value, type, location, acceptableValues);
+                listSensors.Add(sensor);
+            }
+
         }
     }
 }

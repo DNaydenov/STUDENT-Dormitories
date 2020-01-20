@@ -58,7 +58,7 @@ namespace GUI
         private async void ConfirmAdd_Click(object sender, RoutedEventArgs e)
         {
             var guid = Guid.NewGuid();
-            sensorType type = (sensorType)Enum.Parse(typeof(sensorType), CBoxType.SelectedValue.ToString()   /*CBoxType.SelectedItem.ToString()*/);
+            sensorType type = (sensorType)Enum.Parse(typeof(sensorType), CBoxType.SelectedValue.ToString());
             var sensorValue = await SensorProcessor.LoadSensorInfo(guid.ToString(), type.ToString().ToLower());
 
             SensorList.AddSensor(txtName.Text, txtDescription.Text, sensorValue, type,

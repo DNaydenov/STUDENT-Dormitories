@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Height="500" Width="800" MinHeight="500" MinWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -29,28 +30,28 @@
 
         <TextBox Name="txtName" Height="30" FontSize="18" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Margin=" 20" />
         <StackPanel x:Name="latLong" Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
-            <TextBox Name="txtMinValue" Height="30" Width="120" FontSize="18" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin=" 20" />
-            <Label Content="-" FontSize="18" VerticalContentAlignment="Center" />
-            <TextBox Name="txtMaxValue" Height="30" Width="120" FontSize="18" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin=" 20" />
-        </StackPanel>
-
-        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3" >
             <TextBox Name="txtLatitude" Height="30" Width="120" FontSize="18" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin=" 20" />
             <Label Content="-" FontSize="18" VerticalContentAlignment="Center" />
             <TextBox Name="txtLongtitude" Height="30" Width="120" FontSize="18" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin=" 20" />
         </StackPanel>
 
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3" >
+            <TextBox Name="txtMinValue" Height="30" Width="120" FontSize="18" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin=" 20" />
+            <Label Content="-" FontSize="18" VerticalContentAlignment="Center" />
+            <TextBox Name="txtMaxValue" Height="30" Width="120" FontSize="18" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin=" 20" />
+        </StackPanel>
+
         <TextBox Name="txtDescription" FontSize="18" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch" Margin=" 20" />
         <ComboBox  Name="CBoxType" Height="30" FontSize="18" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" Margin=" 20">
-            <ComboBoxItem Content="Temperature"/>
+            <!--<ComboBoxItem Name="Temperature" Content="Temperature"/>
             <ComboBoxItem Content="Humidity"/>
             <ComboBoxItem Content="Electric power consumation"/>
             <ComboBoxItem Content="Window /door (opened - closed)"/>
-            <ComboBoxItem Content="Noise"/>
+            <ComboBoxItem Content="Noise"/>-->
         </ComboBox>
         
-        <Button Name="btnConfirmAdd" Content="Add Sensor" IsCancel="True" Visibility="Hidden" Height="60" Width="180" FontSize="24" Grid.Column="2" Grid.Row="0" Click="ConfirmAdd_Click"/>
-        <Button Name="btnConfirmModify" Content="Modify Sensor" IsCancel="True" Visibility="Hidden" Height="60" Width="180" FontSize="24" Grid.Column="2" Grid.Row="0" Click="ConfirmModify_Click" />
+        <Button Name="btnConfirmAdd" Content="Add Sensor" Visibility="Hidden" Height="60" Width="180" FontSize="24" Grid.Column="2" Grid.Row="0" Click="ConfirmAdd_Click"/>
+        <Button Name="btnConfirmModify" Content="Modify Sensor" Visibility="Hidden" Height="60" Width="180" FontSize="24" Grid.Column="2" Grid.Row="0" Click="ConfirmModify_Click" />
         <Button Name="btnClearAddData" Content="Clear Data" Height="60" Width="180" FontSize="24" Grid.Column="2" Grid.Row="1" Click="ClearAddData_Click" />
         <Button Name="btnCancelAdd" Content="Cancel" IsCancel="True" Height="60" Width="180" FontSize="24" Grid.Column="2" Grid.Row="2" />
     </Grid>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +9,17 @@ namespace DormitorySensor
 {
     public enum sensorType
     {
+        [Description("Temperature1")]
         Temperature,
+        [Description("Humidity1")]
         Humidity,
+        [Description("ElPowerConsumption1")]
         ElPowerConsumption,
+        [Description("WindowOrDoorSensor1")]
         WindowOrDoorSensor, // if possible another representation, ex. bool windowSensor (true/false)
+        [Description("Noise1")]
         Noise,
+        [Description("None")]
         None
     }
     public class Sensor
@@ -40,7 +47,7 @@ namespace DormitorySensor
             Value = value;
             Type = type;
             Location = location;
-           // AcceptableValues = acceptableValues;
+            AcceptableValues = acceptableValues;
             Id = ID++;
             
         }
@@ -105,23 +112,5 @@ namespace DormitorySensor
         }
 
         #endregion
-
-        //public void PrintSensorInfo()
-        //{
-        //    Console.WriteLine("Name: {0} Description: {1} Type: {2} Latitude: {3} Longtitude: {4}", name, description, type,location);
-        //}
-
-        //public void PrintAll(List<Sensor> sensors)
-        //{
-        //    foreach (var item in sensors)
-        //    {
-        //        PrintSensorInfo();
-        //    }
-        //}
-        //public Sensor ModifySensor(string name, string description, sensorType type, double latitude, double longtitute)
-        //{
-        //    //not ready 
-        //    return null;
-        //}
     }
 }

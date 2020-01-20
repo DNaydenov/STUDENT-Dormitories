@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Loaded="Window_Loaded"
         Title="MainWindow" Height="450" Width="800"  MinHeight="300" MinWidth="550">
-    <TabControl Margin="0" SelectionChanged="TabControl_SelectionChanged">
+    <TabControl Margin="0">
         <!--Closing="Window_Closing"   sloji go do loaded :D -->
         <TabItem Name="MapView" Header="Map view" IsSelected="True">
             <Grid>

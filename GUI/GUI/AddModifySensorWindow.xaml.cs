@@ -50,17 +50,31 @@ namespace GUI
             }
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainWindow.LoadComboBoxItems(CBoxType);
+        }
+
         private async void ConfirmAdd_Click(object sender, RoutedEventArgs e)
         {
-            //call API and get value 
             var guid = Guid.NewGuid();
-            var type = GetSensorType(CBoxType.SelectedIndex);
-            var sensorValue = await SensorProcessor.LoadSensorInfo(guid.ToString(),type.ToString() );
-            SensorList.AddSensor(txtName.Text, txtDescription.Text, sensorValue, type, (0, 0),
+            sensorType type = (sensorType)Enum.Parse(typeof(sensorType), CBoxType.SelectedValue.ToString()   /*CBoxType.SelectedItem.ToString()*/);
+            var sensorValue = await SensorProcessor.LoadSensorInfo(guid.ToString(), type.ToString().ToLower());
+
+            SensorList.AddSensor(txtName.Text, txtDescription.Text, sensorValue, type,
+                (Double.Parse(txtLatitude.Text), Double.Parse(txtLongtitude.Text)),
                 (Double.Parse(txtMinValue.Text), Double.Parse(txtMaxValue.Text)));
-            
+            Close();
+        }
 
-
+        private void ConfirmModify_Click(object sender, RoutedEventArgs e)
+        {
+            sensorType type = (sensorType)Enum.Parse(typeof(sensorType), CBoxType.SelectedValue.ToString());
+            //Enum.TryParse(CBoxType.SelectedItem.ToString(), out sensorType type);
+            SensorList.Modify(sensor.Id, txtName.Text, txtDescription.Text, type,
+                (Double.Parse(txtLatitude.Text), Double.Parse(txtLongtitude.Text)),
+                (Double.Parse(txtMinValue.Text), Double.Parse(txtMaxValue.Text)));
+            Close();
         }
 
         private void ClearAddData_Click(object sender, RoutedEventArgs e)
@@ -76,44 +90,6 @@ namespace GUI
             txtLongtitude.Clear();
             txtMinValue.Clear();
             txtMaxValue.Clear();
-        }
-
-        private void ConfirmModify_Click(object sender, RoutedEventArgs e)
-        {
-            Enum.TryParse(CBoxType.SelectedItem.ToString(), out sensorType myStatus);
-            SensorList.Modify(sensor.Id, txtName.Text, txtDescription.Text, myStatus, (0, 0),
-            (Double.Parse(txtMinValue.Text), Double.Parse(txtMaxValue.Text)));
-        }
-
-        private sensorType GetSensorType(int index)
-        {
-            sensorType sensorType;
-            switch (index)
-            {
-                case 0:
-                    sensorType = sensorType.Temperature;
-                    break;
-                case 1:
-                    sensorType = sensorType.Humidity;
-                    break;
-
-                case 2:
-                    sensorType = sensorType.ElPowerConsumption;
-                    break;
-
-                case 3:
-                    sensorType = sensorType.WindowOrDoorSensor;
-                    break;
-
-                case 4:
-                    sensorType = sensorType.Noise;
-                    break;
-
-                default:
-                    sensorType = sensorType.None;
-                    break;
-            }
-            return sensorType;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,35 +11,29 @@ namespace DormitorySensor
 {
     public static class  SensorList
     {
-        // consider using MVVM
-        // consider using ObservableCollection 
-        private static ObservableCollection<Sensor> listSensors = new ObservableCollection<Sensor>();
+        private static readonly string cstPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "DormitorySensors\\SensorList.xml");
 
         static SensorList()
         {
             ListSensors = new ObservableCollection<Sensor>();
         }
 
-        public static ObservableCollection<Sensor> ListSensors
-        {
-            get { return listSensors; }
-            set { listSensors = value; }
-        }
+        public static ObservableCollection<Sensor> ListSensors { get; }
 
         public static void AddSensor(string name, string description, int value, sensorType type, (double latitude, double longtitude) location, (double min, double max) acceptableValues)
         {
             Sensor s = new Sensor(name, description, value, type, location, acceptableValues);
-            listSensors.Add(s);
+            ListSensors.Add(s);
         }
 
         public static void Remove(Sensor sensor)
         {
-            listSensors.Remove(sensor);
+            ListSensors.Remove(sensor);
         }
 
         public static void Modify(int id, string name, string description, sensorType type, (double latitude, double longtitude) location, (double min, double max) acceptableValues)
         {
-            var sensorToModify = listSensors.Where(item => item.Id == id).FirstOrDefault();
+            var sensorToModify = ListSensors.Where(item => item.Id == id).FirstOrDefault();
             sensorToModify.Name = name;
             sensorToModify.Description = description;
             sensorToModify.Type = type;
@@ -50,7 +45,7 @@ namespace DormitorySensor
         {
             XDocument doc = new XDocument();
             XElement root = new XElement("SensorList");
-            foreach(var sensors in listSensors)
+            foreach(var sensors in ListSensors)
             {
                 XElement sensor =
                     new XElement("Sensor",
@@ -67,13 +62,12 @@ namespace DormitorySensor
                 root.Add(sensor);
             }
             doc.Add(root);
-            doc.Save("C:\\Users\\User\\Desktop\\Test.xml");
+            doc.Save(cstPath);
         }
 
         public static void LoadXmlFile()
         {
-            var sensors = XDocument.Load("C:\\Users\\User\\Desktop\\Test.xml").Root.Elements("Sensor");
-
+            var sensors = XDocument.Load(cstPath).Root.Elements("Sensor");
             foreach(var sensorload in sensors)
             {
                 var name = sensorload.Attribute("Name").Value;
@@ -86,7 +80,7 @@ namespace DormitorySensor
                                         Double.Parse(sensorload.Element("AcceptableValues").Attribute("MaxValue").Value));
 
                 Sensor sensor = new Sensor(name, desc, value, type, location, acceptableValues);
-                listSensors.Add(sensor);
+                ListSensors.Add(sensor);
             }
 
         }

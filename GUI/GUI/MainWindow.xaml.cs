@@ -32,7 +32,7 @@ namespace GUI
         }
         public void InitMap()
         {
-            BingMap.ZoomLevel = 9;
+            BingMap.ZoomLevel = 5;
             //Sofia location
             BingMap.Center = new Location(42.698334, 23.319941);
         }

@@ -9,15 +9,15 @@ namespace DormitorySensor
 {
     public enum sensorType
     {
-        [Description("Temperature1")]
+        [Description("Temperature")]
         Temperature,
-        [Description("Humidity1")]
+        [Description("Humidity")]
         Humidity,
-        [Description("ElPowerConsumption1")]
+        [Description("ElPowerConsumption")]
         ElPowerConsumption,
-        [Description("WindowOrDoorSensor1")]
+        [Description("WindowOrDoorSensor (open-close)")]
         WindowOrDoorSensor, // if possible another representation, ex. bool windowSensor (true/false)
-        [Description("Noise1")]
+        [Description("Noise")]
         Noise,
         [Description("None")]
         None
@@ -29,11 +29,10 @@ namespace DormitorySensor
         private string description;
         private sensorType type;
         private (double latitude, double lonsgtitude) location;
-       // private double value;
+        private double value;
         private (double min, double max) acceptableValues;
         private bool tickOf;
        
-
         private static int ID=0;
 
         #endregion
@@ -75,7 +74,6 @@ namespace DormitorySensor
             set { name = value; }
         }
 
-
         public string Description
         {
             get { return description; }
@@ -96,7 +94,7 @@ namespace DormitorySensor
 
         public (double min, double max) AcceptableValues
         {
-              get { return (acceptableValues.min, acceptableValues.max); }
+            get { return (acceptableValues.min, acceptableValues.max); }
             set
             {
                 if (value.min< value.max)
@@ -106,7 +104,6 @@ namespace DormitorySensor
                 else
                 {
                     acceptableValues = (value.max, value.min);
-
                 }
             }
         }

@@ -1,6 +1,7 @@
 ﻿using DormitorySensor;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -46,7 +47,7 @@ namespace GUI
             }
             else
             {
-                Debug.Assert(true, "invalid button");
+                Debug.Assert(true, "Check Buttons Content");
             }
         }
 
@@ -57,11 +58,11 @@ namespace GUI
 
         private async void ConfirmAdd_Click(object sender, RoutedEventArgs e)
         {
-            var guid = Guid.NewGuid();
+            var sensorId = Guid.NewGuid();
             sensorType type = (sensorType)Enum.Parse(typeof(sensorType), CBoxType.SelectedValue.ToString());
-            var sensorValue = await SensorProcessor.LoadSensorInfo(guid.ToString(), type.ToString().ToLower());
+            var sensorValue = await SensorProcessor.LoadSensorInfo(sensorId.ToString(), type.ToDescriptionString().ToLower());
 
-            SensorList.AddSensor(txtName.Text, txtDescription.Text, sensorValue, type,
+            SensorList.AddSensor(txtName.Text, sensorId, sensorValue, type, txtDescription.Text,
                 (Double.Parse(txtLatitude.Text), Double.Parse(txtLongtitude.Text)),
                 (Double.Parse(txtMinValue.Text), Double.Parse(txtMaxValue.Text)));
             Close();
@@ -71,7 +72,7 @@ namespace GUI
         {
             sensorType type = (sensorType)Enum.Parse(typeof(sensorType), CBoxType.SelectedValue.ToString());
             //Enum.TryParse(CBoxType.SelectedItem.ToString(), out sensorType type);
-            SensorList.Modify(sensor.Id, txtName.Text, txtDescription.Text, type,
+            SensorList.Modify(txtName.Text, sensor.SensorId, type, txtDescription.Text,
                 (Double.Parse(txtLatitude.Text), Double.Parse(txtLongtitude.Text)),
                 (Double.Parse(txtMinValue.Text), Double.Parse(txtMaxValue.Text)));
             Close();

@@ -17,7 +17,6 @@ namespace DormitorySensor
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    //var jsonResponse = await response.Content.ReadAsStringAsync();
                     Sensor result = await response.Content.ReadAsAsync<Sensor>();
                     return result.Value;
                 }

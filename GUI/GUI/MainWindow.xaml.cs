@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Maps.MapControl.WPF;
 using System.ComponentModel;
+using System.Threading;
 
 namespace GUI
 {
@@ -29,6 +30,12 @@ namespace GUI
             InitMap();
             //Http client is initialized at the start of our app
             ApiHelper.InitializeClient();
+            SensorList.LoadXmlFile();
+            dataGrid.ItemsSource = SensorList.ListSensors;
+            foreach (var location in SensorList.ListSensors.Select(x => new Location(x.Location.latitude, x.Location.longtitude)))
+            {
+                AddPushpinToMap(location);
+            }
         }
         public void InitMap()
         {
@@ -37,14 +44,16 @@ namespace GUI
             BingMap.Center = new Location(42.698334, 23.319941);
         }
 
+        public event EventHandler RaiseAddPushpinEvent;
+
+        protected virtual void OnRaiseAddPushpin(EventArgs e)
+        {
+            RaiseAddPushpinEvent?.Invoke(this, e);
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            SensorList.LoadXmlFile();
-            dataGrid.ItemsSource = SensorList.ListSensors;
-            foreach(var location in SensorList.ListSensors.Select(x => new Location(x.Location.latitude,x.Location.longtitude)))
-            {
-                AddPushpinToMap(location);
-            }
+            //All code from here was moved in constructor
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
@@ -59,7 +68,6 @@ namespace GUI
             var pinLocation = SensorList.ListSensors.Last().Location;
             AddPushpinToMap(new Location(pinLocation.latitude, pinLocation.latitude));
         }
-
         
         private void Modify_Click(object sender, RoutedEventArgs e)
         {
@@ -68,8 +76,8 @@ namespace GUI
             LoadComboBoxItems(ModifySensorWindow.CBoxType);
 
             ModifySensorWindow.txtName.Text = sensorToModify.Name;
-            ModifySensorWindow.txtDescription.Text = sensorToModify.Description;
             ModifySensorWindow.CBoxType.SelectedValue = Enum.GetName(typeof(sensorType), sensorToModify.Type);
+            ModifySensorWindow.txtDescription.Text = sensorToModify.Description;
             ModifySensorWindow.txtLatitude.Text = sensorToModify.Location.latitude.ToString();
             ModifySensorWindow.txtLongtitude.Text = sensorToModify.Location.longtitude.ToString();
             ModifySensorWindow.txtMinValue.Text = sensorToModify.AcceptableValues.min.ToString();

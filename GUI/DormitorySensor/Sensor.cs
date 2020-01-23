@@ -13,42 +13,46 @@ namespace DormitorySensor
         Temperature,
         [Description("Humidity")]
         Humidity,
-        [Description("ElPowerConsumption")]
+        [Description("Electric power consumption ")]
         ElPowerConsumption,
-        [Description("WindowOrDoorSensor (open-close)")]
+        [Description("Window/door ")]
         WindowOrDoorSensor, // if possible another representation, ex. bool windowSensor (true/false)
         [Description("Noise")]
-        Noise,
-        [Description("None")]
-        None
+        Noise
+    }
+
+    public static class SensorTypeEnumExtensions
+    {
+        public static string ToDescriptionString(this sensorType val)
+        {
+            DescriptionAttribute[] attributes = (DescriptionAttribute[])val
+               .GetType()
+               .GetField(val.ToString())
+               .GetCustomAttributes(typeof(DescriptionAttribute), false);
+            return attributes.Length > 0 ? attributes[0].Description : string.Empty;
+        }
     }
     public class Sensor
     {
         #region Members
-        private string name;
-        private string description;
         private sensorType type;
         private (double latitude, double lonsgtitude) location;
-        private double value;
         private (double min, double max) acceptableValues;
         private bool tickOf;
        
-        private static int ID=0;
-
         #endregion
 
         #region Ctors
 
-        public Sensor(string name, string description, int value, sensorType type, (double latitude, double longtitude) location, (double min, double max) acceptableValues)
+        public Sensor(string name, Guid sensorId,  int value, sensorType type, string description, (double latitude, double longtitude) location, (double min, double max) acceptableValues)
         {
             Name = name;
-            Description = description;
+            SensorId = sensorId;
             Value = value;
             Type = type;
+            Description = description;
             Location = location;
             AcceptableValues = acceptableValues;
-            Id = ID++;
-            
         }
         //public Sensor(Sensor sens) : this(sens.name, sens.description, sens.type, sens.latitude, sens.longtitude, sens.acceptableValues)
         //{
@@ -61,30 +65,19 @@ namespace DormitorySensor
         #endregion
 
         #region Props
+        public string Name { get; set; }
+
         public Guid SensorId { get; set; }
-        public DateTime TimeStamp { get; set; }
+
         public int Value { get; set; }
-        public string ValueType{ get; set; }
-
-        public int Id { get; }
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public string Description
-        {
-            get { return description; }
-            set { description = value; }
-        }
 
         public sensorType Type
         {
             get { return type; }
             set { type = value; }
         }
+
+        public string Description { get; set; }
 
         public (double latitude, double longtitude) Location
         {

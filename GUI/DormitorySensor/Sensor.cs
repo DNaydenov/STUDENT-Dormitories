@@ -13,10 +13,10 @@ namespace DormitorySensor
         Temperature,
         [Description("Humidity")]
         Humidity,
-        [Description("Electric power consumption ")]
+        [Description("Electric power")]
         ElPowerConsumption,
-        [Description("Window/door ")]
-        WindowOrDoorSensor, // if possible another representation, ex. bool windowSensor (true/false)
+        [Description("Window")]
+        Window,
         [Description("Noise")]
         Noise
     }
@@ -35,7 +35,6 @@ namespace DormitorySensor
     public class Sensor
     {
         #region Members
-        private sensorType type;
         private (double latitude, double lonsgtitude) location;
         private (double min, double max) acceptableValues;
         private bool tickOf;
@@ -71,11 +70,7 @@ namespace DormitorySensor
 
         public int Value { get; set; }
 
-        public sensorType Type
-        {
-            get { return type; }
-            set { type = value; }
-        }
+        public sensorType Type { get; set; }
 
         public string Description { get; set; }
 

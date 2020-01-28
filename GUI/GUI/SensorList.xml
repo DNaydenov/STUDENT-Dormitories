@@ -1,83 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SensorList>
-  <Sensor Name="1" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c4" Type="Noise" Value="4" Description="">
+  <Sensor Name="sensor1123123" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c4" Type="Noise" Value="139" Description="test1csdcs">
     <Location Latitude="2" Longtitude="3" />
     <AcceptableValues MinValue="4" MaxValue="5" />
   </Sensor>
-  <Sensor Name="2" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="33" Description="">
-    <Location Latitude="22" Longtitude="3" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
+  <Sensor Name="asdasdwefw" SensorId="d1ac10f7-696b-40c8-bc6c-488686111663" Type="Temperature" Value="27" Description="asdre">
+    <Location Latitude="1" Longtitude="1" />
+    <AcceptableValues MinValue="2" MaxValue="3" />
   </Sensor>
-  <Sensor Name="3" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="21" Description="">
-    <Location Latitude="2" Longtitude="32" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
+  <Sensor Name="safaf" SensorId="afd517b9-68d8-45b5-b022-e98a32ef5752" Type="ElPowerConsumption" Value="2677" Description="adasd">
+    <Location Latitude="1" Longtitude="2" />
+    <AcceptableValues MinValue="3" MaxValue="4" />
   </Sensor>
-  <Sensor Name="4" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="76" Description="">
-    <Location Latitude="13" Longtitude="3" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="5" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="14" Description="">
-    <Location Latitude="14" Longtitude="23" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="6" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="1" Description="">
-    <Location Latitude="32" Longtitude="45" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="7" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="78" Description="">
-    <Location Latitude="6" Longtitude="40" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="8" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="16" Description="">
-    <Location Latitude="23" Longtitude="12" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="9" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="71" Description="">
-    <Location Latitude="54" Longtitude="13" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="10" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="9" Description="">
-    <Location Latitude="35" Longtitude="21" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="11" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="63" Description="">
-    <Location Latitude="23" Longtitude="23" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="12" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="1" Description="">
-    <Location Latitude="34" Longtitude="45" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="13" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="128" Description="">
-    <Location Latitude="21" Longtitude="12" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="14" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="66" Description="">
-    <Location Latitude="29" Longtitude="38" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="15" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="4" Description="">
-    <Location Latitude="12" Longtitude="46" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="16" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="58" Description="">
-    <Location Latitude="25" Longtitude="48" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="17" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="135" Description="">
-    <Location Latitude="21" Longtitude="45" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="18" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="50" Description="">
-    <Location Latitude="34" Longtitude="40" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="19" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="127" Description="">
-    <Location Latitude="43" Longtitude="21" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="20" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c3" Type="Noise" Value="115" Description="">
-    <Location Latitude="52" Longtitude="31" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
+  <Sensor Name="asd" SensorId="ad1586f9-9cae-4a22-91f1-8d7310008d78" Type="Window" Value="0" Description="window">
+    <Location Latitude="1" Longtitude="5" />
+    <AcceptableValues MinValue="3" MaxValue="4" />
   </Sensor>
 </SensorList>

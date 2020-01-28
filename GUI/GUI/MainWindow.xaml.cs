@@ -24,14 +24,18 @@ namespace GUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static System.Timers.Timer timer;
+
         public MainWindow()
         {
             InitializeComponent();
             InitMap();
             //Http client is initialized at the start of our app
             ApiHelper.InitializeClient();
-            SensorList.LoadXmlFile();
             dataGrid.ItemsSource = SensorList.ListSensors;
+            //dataGrid.Items.Refresh();
+            SensorList.LoadXmlFile();
+           
             foreach (var location in SensorList.ListSensors.Select(x => new Location(x.Location.latitude, x.Location.longtitude)))
             {
                 AddPushpinToMap(location);
@@ -44,20 +48,17 @@ namespace GUI
             BingMap.Center = new Location(42.698334, 23.319941);
         }
 
-        public event EventHandler RaiseAddPushpinEvent;
-
-        protected virtual void OnRaiseAddPushpin(EventArgs e)
-        {
-            RaiseAddPushpinEvent?.Invoke(this, e);
-        }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //All code from here was moved in constructor
+            timer = new System.Timers.Timer(5000);
+            timer.Elapsed += SensorList.RefreshSensors;
+            timer.AutoReset = true;
+            timer.Enabled = true;
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
+            timer.Enabled = false;
             SensorList.SaveSensorListToXmlFile();
         }
 
@@ -85,8 +86,8 @@ namespace GUI
 
             var oldLocation = new Location(sensorToModify.Location.latitude, sensorToModify.Location.longtitude);
             ModifySensorWindow.ShowDialog();
-            var newLocation = new Location(sensorToModify.Location.latitude, sensorToModify.Location.longtitude);
-
+             var newLocation = new Location(sensorToModify.Location.latitude, sensorToModify.Location.longtitude);
+            //dataGrid.ItemsSource = null;
             if (!oldLocation.Equals(newLocation))
             {
                 RelocatePin(oldLocation, newLocation);
@@ -111,15 +112,6 @@ namespace GUI
                 .Where(x => x.Location.Latitude == oldLocation.Latitude && x.Location.Longitude == oldLocation.Longitude).FirstOrDefault();
             BingMap.Children.Remove(oldPin);
             AddPushpinToMap(newLocation);
-        }
-
-        private async void loadSensorInfo_Click(object sender, RoutedEventArgs e)
-        {
-            //var sensorInfo = await SensorProcessor.LoadSensorInfo();
-            //sensorDateText.Text = $"Sensor date {sensorInfo.timeStamp}";
-            ////sensorTypeText.Text = $"Sensor type {sensorInfo.valueType}";
-            //sensorTypeText.Text = $"Sensor value {sensorInfo.value}";
-            ////sunsetText.Text = $"Sunset is at {sunInfo.measure_type_of_value}";
         }
 
         public static void LoadComboBoxItems(ComboBox cbo)

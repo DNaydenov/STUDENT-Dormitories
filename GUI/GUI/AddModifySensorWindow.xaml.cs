@@ -71,7 +71,6 @@ namespace GUI
         private void ConfirmModify_Click(object sender, RoutedEventArgs e)
         {
             sensorType type = (sensorType)Enum.Parse(typeof(sensorType), CBoxType.SelectedValue.ToString());
-            //Enum.TryParse(CBoxType.SelectedItem.ToString(), out sensorType type);
             SensorList.Modify(txtName.Text, sensor.SensorId, type, txtDescription.Text,
                 (Double.Parse(txtLatitude.Text), Double.Parse(txtLongtitude.Text)),
                 (Double.Parse(txtMinValue.Text), Double.Parse(txtMaxValue.Text)));

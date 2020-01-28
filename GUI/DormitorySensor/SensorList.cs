@@ -17,14 +17,17 @@ namespace DormitorySensor
         static SensorList()
         {
             ListSensors = new ObservableCollection<Sensor>();
+            ListTickOfSensors = new ObservableCollection<Sensor>();
         }
 
         public static ObservableCollection<Sensor> ListSensors { get; }
+        public static ObservableCollection<Sensor> ListTickOfSensors { get; }
 
         public static void AddSensor(string name, Guid sensorId, int value, sensorType type, string description, (double latitude, double longtitude) location, (double min, double max) acceptableValues)
         {
             Sensor s = new Sensor(name, sensorId, value, type, description, location, acceptableValues);
             ListSensors.Add(s);
+            
         }
 
         public static void Remove(Sensor sensor)
@@ -83,15 +86,18 @@ namespace DormitorySensor
                                     Double.Parse(sensorload.Element("Location").Attribute("Longtitude").Value));
                     var acceptableValues = (Double.Parse(sensorload.Element("AcceptableValues").Attribute("MinValue").Value),
                                             Double.Parse(sensorload.Element("AcceptableValues").Attribute("MaxValue").Value));
-
-                    //TODO call api to refresh all values
-                    //value = await SensorProcessor.LoadSensorInfo(sensorId.ToString(), type.ToDescriptionString().ToLower());
-                    
-
                     AddSensor(name, sensorId, value, type, desc, location, acceptableValues);
                 }
             }
 
+        }
+
+        public async static void RefreshSensors(Object source, System.Timers.ElapsedEventArgs e)
+        {
+            foreach(var sensor in ListSensors)
+            {
+               sensor.Value= await SensorProcessor.LoadSensorInfo(sensor.SensorId.ToString(), sensor.Type.ToDescriptionString().ToLower());
+            }
         }
     }
 }

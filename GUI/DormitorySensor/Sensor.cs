@@ -32,18 +32,23 @@ namespace DormitorySensor
             return attributes.Length > 0 ? attributes[0].Description : string.Empty;
         }
     }
-    public class Sensor
+    public class Sensor : INotifyPropertyChanged
     {
         #region Members
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private string name;
+        private int value;
+        private string description;
         private (double latitude, double lonsgtitude) location;
         private (double min, double max) acceptableValues;
-        private bool tickOf;
-       
+
         #endregion
 
         #region Ctors
 
-        public Sensor(string name, Guid sensorId,  int value, sensorType type, string description, (double latitude, double longtitude) location, (double min, double max) acceptableValues)
+        public Sensor(string name, Guid sensorId, int value, sensorType type, string description, (double latitude, double longtitude) location, (double min, double max) acceptableValues)
         {
             Name = name;
             SensorId = sensorId;
@@ -52,6 +57,7 @@ namespace DormitorySensor
             Description = description;
             Location = location;
             AcceptableValues = acceptableValues;
+            TickOf = IsValueOutOfRange(value, acceptableValues);
         }
         //public Sensor(Sensor sens) : this(sens.name, sens.description, sens.type, sens.latitude, sens.longtitude, sens.acceptableValues)
         //{
@@ -64,15 +70,50 @@ namespace DormitorySensor
         #endregion
 
         #region Props
-        public string Name { get; set; }
+        public bool TickOf { get; set; }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+                OnPropertyChanged("Name");
+            }
+        }
 
         public Guid SensorId { get; set; }
 
-        public int Value { get; set; }
+        public int Value
+        {
+            get
+            {
+                return value;
+            }
+            set
+            {
+                this.value = value;
+                OnPropertyChanged("Value");
+            }
+        }
 
         public sensorType Type { get; set; }
 
-        public string Description { get; set; }
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+            set
+            {
+                description = value;
+                OnPropertyChanged("Description");
+            }
+        }
 
         public (double latitude, double longtitude) Location
         {
@@ -85,7 +126,7 @@ namespace DormitorySensor
             get { return (acceptableValues.min, acceptableValues.max); }
             set
             {
-                if (value.min< value.max)
+                if (value.min < value.max)
                 {
                     acceptableValues = (value.min, value.max);
                 }
@@ -95,7 +136,18 @@ namespace DormitorySensor
                 }
             }
         }
-
         #endregion
+
+        public bool IsValueOutOfRange(int value, (double min, double max) AcceptableValues)
+        {
+            return (value >= acceptableValues.min && value <= acceptableValues.min) ? false : true;
+        }
+        protected void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
     }
 }

@@ -10,14 +10,14 @@
         Closing="Window_Closing"
         Title="MainWindow" Height="450" Width="800"  MinHeight="300" MinWidth="550">
     <TabControl Margin="0">
-        
-        <TabItem Name="MapView" Header="Map view" IsSelected="True">
+
+        <TabItem Name="MapView" Header="Map view" IsSelected="False">
             <Grid>
                 <m:Map Name="BingMap" CredentialsProvider="Ot3otvT4DLmDPUiFS6SC~yhCCJXsMfz8yzxrGa_E-QA~AiAehwfjDbOcZr3pz_GGGSxcCLrOTeU04Vjf2psBAHyPDnZ-N9Ps9MCV1h1FSlud"/>
             </Grid>
         </TabItem>
 
-        <TabItem Name="ViewAllTab" Header="View all" IsSelected="False">
+        <TabItem Name="ViewAllTab" Header="View all" IsSelected="True">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="5*"/>
@@ -47,15 +47,21 @@
 
         <TabItem Name="GraphicalViewTab" Header="Graphical info" IsSelected="False">
             <Canvas>
-                <Button x:Name="btnLoadSunInfo" Content="Load Sensor Info" Margin="20 20 0 0 " Click="loadSensorInfo_Click" Width="720" />
+                <Button x:Name="btnLoadSunInfo" Content="Load Sensor Info" Margin="20 20 0 0 " Width="720" />
                 <TextBlock x:Name="sensorDateText" Margin="0 50 0 0 "/>
                 <TextBlock x:Name="sensorTypeText" Margin="0 80 0 0"/>
-                
+
             </Canvas>
-            
+
         </TabItem>
         <TabItem Name="ReportsTab" Header="Reports" IsSelected="False">
-            list those sensors which are above the normal value
+            <DataGrid Name="reportGrid" IsReadOnly="True" Grid.Row="0" CanUserAddRows="False" ItemsSource="{Binding ListTickOfSensors}" CanUserDeleteRows="False" EnableRowVirtualization="False" AutoGenerateColumns="False" Padding="20,20">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="*" MinWidth="50" />
+                    <DataGridTextColumn Header="Acceptable range" IsReadOnly="True" Binding="{Binding Path=Location}" Width="*" MinWidth="30" />
+                    <DataGridTextColumn Header="Value" IsReadOnly="True" Binding="{Binding Path=Value}" Width="*" MinWidth="50" />
+                </DataGrid.Columns>
+            </DataGrid>
         </TabItem>
     </TabControl>
 

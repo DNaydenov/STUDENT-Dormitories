@@ -33,9 +33,9 @@ namespace GUI
             //Http client is initialized at the start of our app
             ApiHelper.InitializeClient();
             dataGrid.ItemsSource = SensorList.ListSensors;
-            //dataGrid.Items.Refresh();
+            reportGrid.ItemsSource = SensorList.ListTickOfSensors;
             SensorList.LoadXmlFile();
-           
+
             foreach (var location in SensorList.ListSensors.Select(x => new Location(x.Location.latitude, x.Location.longtitude)))
             {
                 AddPushpinToMap(location);
@@ -50,7 +50,7 @@ namespace GUI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            timer = new System.Timers.Timer(5000);
+            timer = new System.Timers.Timer(10000);
             timer.Elapsed += SensorList.RefreshSensors;
             timer.AutoReset = true;
             timer.Enabled = true;
@@ -69,7 +69,7 @@ namespace GUI
             var pinLocation = SensorList.ListSensors.Last().Location;
             AddPushpinToMap(new Location(pinLocation.latitude, pinLocation.latitude));
         }
-        
+
         private void Modify_Click(object sender, RoutedEventArgs e)
         {
             var sensorToModify = (Sensor)dataGrid.SelectedItem;
@@ -86,12 +86,13 @@ namespace GUI
 
             var oldLocation = new Location(sensorToModify.Location.latitude, sensorToModify.Location.longtitude);
             ModifySensorWindow.ShowDialog();
-             var newLocation = new Location(sensorToModify.Location.latitude, sensorToModify.Location.longtitude);
+            var newLocation = new Location(sensorToModify.Location.latitude, sensorToModify.Location.longtitude);
             //dataGrid.ItemsSource = null;
             if (!oldLocation.Equals(newLocation))
             {
                 RelocatePin(oldLocation, newLocation);
             }
+            //dataGrid.Items.Refresh();
         }
 
         private void Remove_Click(object sender, RoutedEventArgs e)

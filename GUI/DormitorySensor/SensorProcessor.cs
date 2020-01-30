@@ -12,8 +12,8 @@ namespace DormitorySensor
     {
         public static async Task<int> LoadSensorInfo(string ID, string sensorType)
         {
-            
-            string url = string.Format("api/sensor?sensorId={0}&sensorType={1}",ID,sensorType);
+
+            string url = string.Format("api/sensor?sensorId={0}&sensorType={1}", ID, sensorType);
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
             {
                 if (response.IsSuccessStatusCode)

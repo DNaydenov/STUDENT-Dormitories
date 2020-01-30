@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace DormitorySensor
 {
-    public static class  SensorList
+    public static class SensorList
     {
         private static readonly string cstPath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "SensorList.xml");
 
@@ -27,7 +27,10 @@ namespace DormitorySensor
         {
             Sensor s = new Sensor(name, sensorId, value, type, description, location, acceptableValues);
             ListSensors.Add(s);
-            
+            if (s.TickOf)
+            {
+                ListTickOfSensors.Add(s);
+            }
         }
 
         public static void Remove(Sensor sensor)
@@ -38,18 +41,29 @@ namespace DormitorySensor
         public static void Modify(string name, Guid sensorId, sensorType type, string description, (double latitude, double longtitude) location, (double min, double max) acceptableValues)
         {
             var sensorToModify = ListSensors.Where(item => item.SensorId == sensorId).FirstOrDefault();
+            var tickOfBeforeModify = sensorToModify.TickOf;
             sensorToModify.Name = name;
             sensorToModify.Type = type;
             sensorToModify.Description = description;
             sensorToModify.Location = location;
             sensorToModify.AcceptableValues = acceptableValues;
+
+            sensorToModify.TickOf = sensorToModify.IsValueOutOfRange(sensorToModify.Value, acceptableValues);
+            if (!tickOfBeforeModify && sensorToModify.TickOf)
+            {
+                ListTickOfSensors.Add(sensorToModify);
+            }
+            else if (tickOfBeforeModify && !sensorToModify.TickOf)
+            {
+                ListTickOfSensors.Remove(sensorToModify);
+            }
         }
 
         public static void SaveSensorListToXmlFile()
         {
             XDocument doc = new XDocument();
             XElement root = new XElement("SensorList");
-            foreach(var sensors in ListSensors)
+            foreach (var sensors in ListSensors)
             {
                 XElement sensor =
                     new XElement("Sensor",
@@ -94,9 +108,9 @@ namespace DormitorySensor
 
         public async static void RefreshSensors(Object source, System.Timers.ElapsedEventArgs e)
         {
-            foreach(var sensor in ListSensors)
+            foreach (var sensor in ListSensors)
             {
-               sensor.Value= await SensorProcessor.LoadSensorInfo(sensor.SensorId.ToString(), sensor.Type.ToDescriptionString().ToLower());
+                sensor.Value = await SensorProcessor.LoadSensorInfo(sensor.SensorId.ToString(), sensor.Type.ToDescriptionString().ToLower());
             }
         }
     }

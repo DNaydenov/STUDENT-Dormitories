@@ -1,0 +1,52 @@
+﻿<Window x:Class="GUI.HumidityGraphicalRepresentation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        mc:Ignorable="d"
+        Title="HumidityGraphicalRepresentation" Height="450" Width="800">
+    <Grid>
+        <telerik:RadVerticalLinearGauge Grid.Row="0" Grid.RowSpan="2" 
+												Grid.Column="2" 
+												Width="102" Height="250">
+            <telerik:VerticalLinearScale Min="0" Max="100" 
+										 MajorTicks="4" 
+                                         RangeLocation="OverOutside"
+                                         RangeOffset="0.03*">
+                <telerik:VerticalLinearScale.Ranges>
+                    <telerik:GaugeRange x:Name="linearGaugeRange1" Min="0" Max="40" StartWidth="0.02" EndWidth="0.05" />
+                    <telerik:GaugeRange x:Name="linearGaugeRange2" Min="40" Max="80" StartWidth="0.05" EndWidth="0.08" />
+                    <telerik:GaugeRange Min="80" Max="100" StartWidth="0.08" EndWidth="0.1"  />
+                </telerik:VerticalLinearScale.Ranges>
+                <telerik:VerticalLinearScale.Indicators>
+                    <telerik:Marker 
+                                            IsAnimated="True"
+                                            Duration="0:0:0.90"  />
+                </telerik:VerticalLinearScale.Indicators>
+                <telerik:VerticalLinearScale.CustomItems>
+                    <Border BorderThickness="1,0,0,0"
+                                    
+                                    telerik:ScaleObject.Value="50"
+                                    telerik:ScaleObject.Location="OverCenter"
+                                    telerik:ScaleObject.RelativeHeight="0.8*"
+                                    telerik:ScaleObject.RelativeWidth="0.14*"/>
+                    <TextBlock Text="%"  
+                                        telerik:ScaleObject.RelativeX="0.2"
+                                       
+                                        FontFamily="Segoe UI Semibold"/>
+                </telerik:VerticalLinearScale.CustomItems>
+            </telerik:VerticalLinearScale>
+            <telerik:VerticalLinearScale Min="0" Max="100" 
+												 MajorTicks="4" 
+												 MiddleTicks="1" 
+												 MinorTicks="1"
+												 MajorTickRelativeWidth="0.1*"
+												 MajorTickRelativeHeight="0.005*"
+												 MajorTickBackground="White"
+												 MajorTickLocation="OverCenter"
+												 Fill="Transparent"/>
+        </telerik:RadVerticalLinearGauge>
+    </Grid>
+</Window>

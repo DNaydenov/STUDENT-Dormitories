@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF" x:Class="GUI.MainWindow"
+        
+        
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
@@ -28,7 +30,15 @@
                         <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="150" MinWidth="30" />
                         <DataGridTextColumn Header="Description" IsReadOnly="True" Binding="{Binding Path=Description}" Width="300" MinWidth="30" />
                         <DataGridTextColumn Header="Value" IsReadOnly="True" Binding="{Binding Path=Value}" Width="50" MinWidth="30" />
-                        <DataGridTextColumn Header="Graphics" IsReadOnly="True" Width="*" MinWidth="30" />
+
+                        <DataGridTemplateColumn Header="Graphics" IsReadOnly="True" Width="*" MinWidth="30">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Name="btnView" Content="View" Click="btnView_Click" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
                     </DataGrid.Columns>
                 </DataGrid>
                 <Grid Grid.Row="1">
@@ -47,11 +57,19 @@
 
         <TabItem Name="GraphicalViewTab" Header="Graphical info" IsSelected="False">
             <Canvas>
-                <Button x:Name="btnLoadSunInfo" Content="Load Sensor Info" Margin="20 20 0 0 " Width="720" />
-                <TextBlock x:Name="sensorDateText" Margin="0 50 0 0 "/>
-                <TextBlock x:Name="sensorTypeText" Margin="0 80 0 0"/>
 
+                <telerik:RadRadialGauge  Canvas.Left="10" Name="radialGauge" 
+                    Width="300" 
+                    Height="300">
+                    <telerik:RadialScale Name="scale" Min="0" Max="100" IsInteractive="True">
+                        <telerik:RadialScale.Indicators>
+                            <telerik:Needle Name="needle" Value="12" RefreshMode="Min" IsAnimated="True" Duration="0:0:0.5" RefreshRate="0:0:1" telerik:ScaleObject.RelativeHeight="0.05*"/>
+                            <telerik:Pinpoint />
+                        </telerik:RadialScale.Indicators>
+                    </telerik:RadialScale>
+                </telerik:RadRadialGauge>
             </Canvas>
+            
 
         </TabItem>
         <TabItem Name="ReportsTab" Header="Reports" IsSelected="False">

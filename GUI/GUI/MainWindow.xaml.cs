@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using Microsoft.Maps.MapControl.WPF;
 using System.ComponentModel;
 using System.Threading;
+using System.Data;
 
 namespace GUI
 {
@@ -35,6 +36,7 @@ namespace GUI
             dataGrid.ItemsSource = SensorList.ListSensors;
             reportGrid.ItemsSource = SensorList.ListTickOfSensors;
             SensorList.LoadXmlFile();
+            this.needle.ValueSource = SensorList.ListSensors;
 
             foreach (var location in SensorList.ListSensors.Select(x => new Location(x.Location.latitude, x.Location.longtitude)))
             {
@@ -129,5 +131,42 @@ namespace GUI
             cbo.DisplayMemberPath = "Description";
             cbo.SelectedValuePath = "value";
         }
+
+        private void btnView_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedSensor = (Sensor)dataGrid.SelectedItem;
+            if(selectedSensor.Type == sensorType.Noise)
+            {
+                NoiseGraphicalRepresentation noiseGraphics = new NoiseGraphicalRepresentation();
+                noiseGraphics.Show();
+            }
+            else if(selectedSensor.Type == sensorType.Window)
+            {
+                if(selectedSensor.Value == 1)
+                {
+                    MessageBox.Show("The senosor indicates that the window is opened");
+                }
+                else
+                {
+                    MessageBox.Show("The senosor indicates that the window is closed");
+                }
+            }
+            else if (selectedSensor.Type == sensorType.Humidity)
+            {
+                HumidityGraphicalRepresentation humidityGraphics = new HumidityGraphicalRepresentation();
+                humidityGraphics.Show();
+            }
+            else if (selectedSensor.Type == sensorType.ElPowerConsumption)
+            {
+                PowerConsumptionGraphicalRepresentation pwrGraphics = new PowerConsumptionGraphicalRepresentation();
+                pwrGraphics.Show();
+            }
+            else
+            {
+                TempreratureGraphicalRepresentation temperatureGraphics = new TempreratureGraphicalRepresentation();
+                temperatureGraphics.Show();
+            }
+        }
     }
+
 }

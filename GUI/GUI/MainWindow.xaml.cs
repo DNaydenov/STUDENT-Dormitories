@@ -36,7 +36,6 @@ namespace GUI
             dataGrid.ItemsSource = SensorList.ListSensors;
             reportGrid.ItemsSource = SensorList.ListTickOfSensors;
             SensorList.LoadXmlFile();
-            this.needle.ValueSource = SensorList.ListSensors;
 
             foreach (var location in SensorList.ListSensors.Select(x => new Location(x.Location.latitude, x.Location.longtitude)))
             {

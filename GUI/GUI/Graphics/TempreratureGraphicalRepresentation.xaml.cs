@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DormitorySensor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,13 +16,14 @@ using System.Windows.Shapes;
 namespace GUI
 {
     /// <summary>
-    /// Interaction logic for HumidityGraphicalRepresentation.xaml
+    /// Interaction logic for TempreratureGraphicalRepresentation.xaml
     /// </summary>
-    public partial class HumidityGraphicalRepresentation : Window
+    public partial class TempreratureGraphicalRepresentation : Window
     {
-        public HumidityGraphicalRepresentation()
+        public TempreratureGraphicalRepresentation(Sensor sensor)
         {
             InitializeComponent();
+            linearBar.DataContext = sensor;
         }
         
     }

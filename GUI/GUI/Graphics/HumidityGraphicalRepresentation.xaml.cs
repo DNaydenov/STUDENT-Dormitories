@@ -11,17 +11,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DormitorySensor;
+using Telerik.Windows.Controls;
 
 namespace GUI
 {
     /// <summary>
-    /// Interaction logic for PowerConsumptionGraphicalRepresentation.xaml
+    /// Interaction logic for HumidityGraphicalRepresentation.xaml
     /// </summary>
-    public partial class PowerConsumptionGraphicalRepresentation : Window
+    public partial class HumidityGraphicalRepresentation : Window
     {
-        public PowerConsumptionGraphicalRepresentation()
+        public HumidityGraphicalRepresentation(Sensor sensor)
         {
             InitializeComponent();
+            marker.DataContext = sensor;
         }
         
     }

@@ -1,0 +1,61 @@
+﻿<Window x:Class="GUI.TempreratureGraphicalRepresentation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        mc:Ignorable="d"
+        Title="TempreratureGraphicalRepresentation" Height="450" Width="800">
+    <Grid>
+        <telerik:RadVerticalLinearGauge Width="24" Height="327" telerik:StyleManager.Theme="Windows8">
+            <telerik:VerticalLinearScale  Name="linearScaleC" 
+                                Min="-30" 
+                                Max="40" 
+                                RelativeY="0.05" 
+                                RelativeHeight="0.85" 
+                                StartWidth="1" 
+                                EndWidth="1" 
+                                MajorTicks="7" 
+                                MajorTickRelativeWidth="0.2" 
+                                MajorTickRelativeHeight="0.003" 
+                                MajorTickLocation="OverOutside" 
+                                MiddleTicks="2" 
+                                MiddleTickRelativeWidth="0.12" 
+                                MiddleTickRelativeHeight="0.003" 
+                                MiddleTickOffset="0.12" 
+                                MiddleTickLocation="OverOutside" 
+                                MinorTicks="1"  
+                                LabelOffset="0.2" 
+                                LabelLocation="Outside" 
+                                Fill="Transparent" 
+                                Stroke="Transparent" 
+                                IsInteractive="True">
+                <telerik:VerticalLinearScale.Ranges>
+                    <telerik:GaugeRange x:Name="coldRange" 
+                                Min="-22" 
+                                Max="20" 
+                                StartWidth="10" 
+                                EndWidth="0" 
+                                        TickBackground="Gray"
+                                IndicatorBackground="#FF3ABF15" />
+                    <telerik:GaugeRange x:Name="overheatRange" 
+                                Min="21" 
+                                Max="104" 
+                                StartWidth="0" 
+                                EndWidth="0" 
+                                IndicatorBackground="#FFE50000" TickBackground="Green" />
+                </telerik:VerticalLinearScale.Ranges>
+                <telerik:VerticalLinearScale.Indicators>
+                    <telerik:BarIndicator x:Name="linearBar" 
+                                          IsAnimated="True"
+                                          Duration="0:0:1"
+                                          Value="{Binding Value}" 
+                                          StrokeThickness="1" 
+                                          StartWidth="0.42" 
+                                          EndWidth="0.42" />
+                </telerik:VerticalLinearScale.Indicators>
+            </telerik:VerticalLinearScale>
+        </telerik:RadVerticalLinearGauge>
+    </Grid>
+</Window>

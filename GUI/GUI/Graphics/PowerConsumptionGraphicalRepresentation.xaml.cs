@@ -11,18 +11,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DormitorySensor;
 
 namespace GUI
 {
     /// <summary>
-    /// Interaction logic for TempreratureGraphicalRepresentation.xaml
+    /// Interaction logic for PowerConsumptionGraphicalRepresentation.xaml
     /// </summary>
-    public partial class TempreratureGraphicalRepresentation : Window
+    public partial class PowerConsumptionGraphicalRepresentation : Window
     {
-        public TempreratureGraphicalRepresentation()
+        public PowerConsumptionGraphicalRepresentation(Sensor sensor)
         {
             InitializeComponent();
+            needle.DataContext = sensor;
         }
-        
     }
 }

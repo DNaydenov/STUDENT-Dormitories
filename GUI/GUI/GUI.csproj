@@ -113,20 +113,20 @@
     <Compile Include="AddModifySensorWindow.xaml.cs">
       <DependentUpon>AddModifySensorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HumidityGraphicalRepresentation.xaml.cs">
+    <Compile Include="Graphics\HumidityGraphicalRepresentation.xaml.cs">
       <DependentUpon>HumidityGraphicalRepresentation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PowerConsumptionGraphicalRepresentation.xaml.cs">
+    <Compile Include="Graphics\PowerConsumptionGraphicalRepresentation.xaml.cs">
       <DependentUpon>PowerConsumptionGraphicalRepresentation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TempreratureGraphicalRepresentation.xaml.cs">
+    <Compile Include="Graphics\TempreratureGraphicalRepresentation.xaml.cs">
       <DependentUpon>TempreratureGraphicalRepresentation.xaml</DependentUpon>
     </Compile>
-    <Page Include="HumidityGraphicalRepresentation.xaml">
+    <Page Include="Graphics\HumidityGraphicalRepresentation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NoiseGraphicalRepresentation.xaml">
+    <Page Include="Graphics\NoiseGraphicalRepresentation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -138,7 +138,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="NoiseGraphicalRepresentation.xaml.cs">
+    <Compile Include="Graphics\NoiseGraphicalRepresentation.xaml.cs">
       <DependentUpon>NoiseGraphicalRepresentation.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
@@ -149,11 +149,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PowerConsumptionGraphicalRepresentation.xaml">
+    <Page Include="Graphics\PowerConsumptionGraphicalRepresentation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TempreratureGraphicalRepresentation.xaml">
+    <Page Include="Graphics\TempreratureGraphicalRepresentation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

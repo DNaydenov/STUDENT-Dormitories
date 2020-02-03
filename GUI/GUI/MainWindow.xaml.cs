@@ -137,8 +137,8 @@ namespace GUI
             var selectedSensor = (Sensor)dataGrid.SelectedItem;
             if(selectedSensor.Type == sensorType.Noise)
             {
-                NoiseGraphicalRepresentation noiseGraphics = new NoiseGraphicalRepresentation();
-                noiseGraphics.Show();
+                NoiseGraphicalRepresentation noiseGraphics = new NoiseGraphicalRepresentation(selectedSensor);
+                noiseGraphics.ShowDialog();
             }
             else if(selectedSensor.Type == sensorType.Window)
             {
@@ -153,18 +153,18 @@ namespace GUI
             }
             else if (selectedSensor.Type == sensorType.Humidity)
             {
-                HumidityGraphicalRepresentation humidityGraphics = new HumidityGraphicalRepresentation();
-                humidityGraphics.Show();
+                HumidityGraphicalRepresentation humidityGraphics = new HumidityGraphicalRepresentation(selectedSensor);
+                humidityGraphics.ShowDialog();
             }
             else if (selectedSensor.Type == sensorType.ElPowerConsumption)
             {
-                PowerConsumptionGraphicalRepresentation pwrGraphics = new PowerConsumptionGraphicalRepresentation();
-                pwrGraphics.Show();
+                PowerConsumptionGraphicalRepresentation pwrGraphics = new PowerConsumptionGraphicalRepresentation(selectedSensor);
+                pwrGraphics.ShowDialog();
             }
             else
             {
-                TempreratureGraphicalRepresentation temperatureGraphics = new TempreratureGraphicalRepresentation();
-                temperatureGraphics.Show();
+                TempreratureGraphicalRepresentation temperatureGraphics = new TempreratureGraphicalRepresentation(selectedSensor);
+                temperatureGraphics.ShowDialog();
             }
         }
     }

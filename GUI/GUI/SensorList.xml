@@ -1,119 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SensorList>
-  <Sensor Name="asd1244353" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c4" Type="Noise" Value="124" Description="test1csdcs">
-    <Location Latitude="2" Longtitude="3" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
+  <Sensor Name="humidity" SensorId="8d701424-bd9e-42d2-8413-dd32e8441c60" Type="Humidity" Value="67" Description="humid">
+    <Location Latitude="30" Longtitude="30" />
+    <AcceptableValues MinValue="0" MaxValue="2300" />
   </Sensor>
-  <Sensor Name="asdasdwefw" SensorId="d1ac10f7-696b-40c8-bc6c-488686111663" Type="Temperature" Value="21" Description="asdre">
-    <Location Latitude="1" Longtitude="1" />
-    <AcceptableValues MinValue="2" MaxValue="3" />
+  <Sensor Name="temp" SensorId="52bfbca7-30f0-4503-935b-eaebf3778ab7" Type="Temperature" Value="30" Description="temp">
+    <Location Latitude="23" Longtitude="45" />
+    <AcceptableValues MinValue="12" MaxValue="23" />
   </Sensor>
-  <Sensor Name="safaf" SensorId="afd517b9-68d8-45b5-b022-e98a32ef5752" Type="ElPowerConsumption" Value="843" Description="adasd">
-    <Location Latitude="1" Longtitude="2" />
-    <AcceptableValues MinValue="3" MaxValue="4" />
+  <Sensor Name="elPower" SensorId="a9c114d8-f106-4316-a985-dbe7ecb97569" Type="ElPowerConsumption" Value="2928" Description="asd">
+    <Location Latitude="2" Longtitude="34" />
+    <AcceptableValues MinValue="44" MaxValue="324" />
   </Sensor>
-  <Sensor Name="asdasdasdsd" SensorId="ad1586f9-9cae-4a22-91f1-8d7310008d78" Type="Window" Value="0" Description="window">
-    <Location Latitude="1" Longtitude="5" />
-    <AcceptableValues MinValue="3" MaxValue="4" />
+  <Sensor Name="Noise" SensorId="367152fe-94fe-4cb1-bddb-77b3c0930c92" Type="Noise" Value="39" Description="asd">
+    <Location Latitude="21" Longtitude="23" />
+    <AcceptableValues MinValue="0" MaxValue="234" />
   </Sensor>
-  <Sensor Name="sensor1123123" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c4" Type="Noise" Value="42" Description="test1csdcs">
-    <Location Latitude="2" Longtitude="3" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="asdasdwefw" SensorId="d1ac10f7-696b-40c8-bc6c-488686111663" Type="Temperature" Value="24" Description="asdre">
-    <Location Latitude="1" Longtitude="1" />
-    <AcceptableValues MinValue="2" MaxValue="3" />
-  </Sensor>
-  <Sensor Name="safaf" SensorId="afd517b9-68d8-45b5-b022-e98a32ef5752" Type="ElPowerConsumption" Value="1047" Description="adasd">
-    <Location Latitude="1" Longtitude="2" />
-    <AcceptableValues MinValue="3" MaxValue="4" />
-  </Sensor>
-  <Sensor Name="asdasdasdsd" SensorId="ad1586f9-9cae-4a22-91f1-8d7310008d78" Type="Window" Value="0" Description="window">
-    <Location Latitude="1" Longtitude="5" />
-    <AcceptableValues MinValue="3" MaxValue="4" />
-  </Sensor>
-  <Sensor Name="sensor1123123" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c4" Type="Noise" Value="49" Description="test1csdcs">
-    <Location Latitude="2" Longtitude="3" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="asdasdwefw" SensorId="d1ac10f7-696b-40c8-bc6c-488686111663" Type="Temperature" Value="3" Description="asdre">
-    <Location Latitude="1" Longtitude="1" />
-    <AcceptableValues MinValue="2" MaxValue="3" />
-  </Sensor>
-  <Sensor Name="safaf" SensorId="afd517b9-68d8-45b5-b022-e98a32ef5752" Type="ElPowerConsumption" Value="1252" Description="adasd">
-    <Location Latitude="1" Longtitude="2" />
-    <AcceptableValues MinValue="3" MaxValue="4" />
-  </Sensor>
-  <Sensor Name="asdasdasdsd" SensorId="ad1586f9-9cae-4a22-91f1-8d7310008d78" Type="Window" Value="0" Description="window">
-    <Location Latitude="1" Longtitude="5" />
-    <AcceptableValues MinValue="3" MaxValue="4" />
-  </Sensor>
-  <Sensor Name="sensor1123123" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c4" Type="Noise" Value="57" Description="test1csdcs">
-    <Location Latitude="2" Longtitude="3" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="asdasdwefw" SensorId="d1ac10f7-696b-40c8-bc6c-488686111663" Type="Temperature" Value="5" Description="asdre">
-    <Location Latitude="1" Longtitude="1" />
-    <AcceptableValues MinValue="2" MaxValue="3" />
-  </Sensor>
-  <Sensor Name="safaf" SensorId="afd517b9-68d8-45b5-b022-e98a32ef5752" Type="ElPowerConsumption" Value="3493" Description="adasd">
-    <Location Latitude="1" Longtitude="2" />
-    <AcceptableValues MinValue="3" MaxValue="4" />
-  </Sensor>
-  <Sensor Name="asdasdasdsd" SensorId="ad1586f9-9cae-4a22-91f1-8d7310008d78" Type="Window" Value="0" Description="window">
-    <Location Latitude="1" Longtitude="5" />
-    <AcceptableValues MinValue="3" MaxValue="4" />
-  </Sensor>
-  <Sensor Name="sensor1123123" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c4" Type="Noise" Value="114" Description="test1csdcs">
-    <Location Latitude="2" Longtitude="3" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="asdasdwefw" SensorId="d1ac10f7-696b-40c8-bc6c-488686111663" Type="Temperature" Value="0" Description="asdre">
-    <Location Latitude="1" Longtitude="1" />
-    <AcceptableValues MinValue="2" MaxValue="3" />
-  </Sensor>
-  <Sensor Name="safaf" SensorId="afd517b9-68d8-45b5-b022-e98a32ef5752" Type="ElPowerConsumption" Value="3059" Description="adasd">
-    <Location Latitude="1" Longtitude="2" />
-    <AcceptableValues MinValue="3" MaxValue="4" />
-  </Sensor>
-  <Sensor Name="asdasdasdsd" SensorId="ad1586f9-9cae-4a22-91f1-8d7310008d78" Type="Window" Value="0" Description="window">
-    <Location Latitude="1" Longtitude="5" />
-    <AcceptableValues MinValue="3" MaxValue="4" />
-  </Sensor>
-  <Sensor Name="sensor1123123" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c4" Type="Noise" Value="121" Description="test1csdcs">
-    <Location Latitude="2" Longtitude="3" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="asdasdwefw" SensorId="d1ac10f7-696b-40c8-bc6c-488686111663" Type="Temperature" Value="28" Description="asdre">
-    <Location Latitude="1" Longtitude="1" />
-    <AcceptableValues MinValue="2" MaxValue="3" />
-  </Sensor>
-  <Sensor Name="asdasdwefw" SensorId="d1ac10f7-696b-40c8-bc6c-488686111663" Type="Temperature" Value="30" Description="asdre">
-    <Location Latitude="1" Longtitude="1" />
-    <AcceptableValues MinValue="2" MaxValue="3" />
-  </Sensor>
-  <Sensor Name="safaf" SensorId="afd517b9-68d8-45b5-b022-e98a32ef5752" Type="ElPowerConsumption" Value="2923" Description="adasd">
-    <Location Latitude="1" Longtitude="2" />
-    <AcceptableValues MinValue="3" MaxValue="4" />
-  </Sensor>
-  <Sensor Name="asdasdasdsd" SensorId="ad1586f9-9cae-4a22-91f1-8d7310008d78" Type="Window" Value="0" Description="window">
-    <Location Latitude="1" Longtitude="5" />
-    <AcceptableValues MinValue="3" MaxValue="4" />
-  </Sensor>
-  <Sensor Name="sensor1123123" SensorId="e6a7a99d-dd8a-4c0d-bd5d-cade066b32c4" Type="Noise" Value="93" Description="test1csdcs">
-    <Location Latitude="2" Longtitude="3" />
-    <AcceptableValues MinValue="4" MaxValue="5" />
-  </Sensor>
-  <Sensor Name="asdasdwefw" SensorId="d1ac10f7-696b-40c8-bc6c-488686111663" Type="Temperature" Value="1" Description="asdre">
-    <Location Latitude="1" Longtitude="1" />
-    <AcceptableValues MinValue="2" MaxValue="3" />
-  </Sensor>
-  <Sensor Name="safaf" SensorId="afd517b9-68d8-45b5-b022-e98a32ef5752" Type="ElPowerConsumption" Value="3127" Description="adasd">
-    <Location Latitude="1" Longtitude="2" />
-    <AcceptableValues MinValue="3" MaxValue="4" />
-  </Sensor>
-  <Sensor Name="asdasdasdsd" SensorId="ad1586f9-9cae-4a22-91f1-8d7310008d78" Type="Window" Value="0" Description="window">
-    <Location Latitude="1" Longtitude="5" />
-    <AcceptableValues MinValue="3" MaxValue="4" />
+  <Sensor Name="window" SensorId="99c1f185-7b17-4ed8-95b3-7c17e3cf949b" Type="Window" Value="0" Description="window">
+    <Location Latitude="23" Longtitude="24" />
+    <AcceptableValues MinValue="0" MaxValue="1" />
   </Sensor>
 </SensorList>

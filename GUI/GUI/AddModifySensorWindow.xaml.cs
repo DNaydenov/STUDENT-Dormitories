@@ -26,6 +26,9 @@ namespace GUI
 
         public AddModifySensorWindow(string name, Sensor sensor = null)
         {
+            // Check IDataErrorInfo interface
+            // Check ValudateOnDataErrors, NotifyOnDataErroes on binding
+            // Check set tooltip with style
             InitializeComponent();
             Title = name;
             ActivateButton(name);

@@ -17,6 +17,7 @@ using Microsoft.Maps.MapControl.WPF;
 using System.ComponentModel;
 using System.Threading;
 using System.Data;
+using GUI.Graphics;
 
 namespace GUI
 {
@@ -103,9 +104,16 @@ namespace GUI
 
         private void AddPushpinToMap(Location location)
         {
-            Pushpin newPin = new Pushpin();
+            OurPushpin newPin = new OurPushpin();
+            newPin.SensorId = Guid.NewGuid();
+            newPin.MouseDoubleClick += NewPin_MouseDoubleClick;
             newPin.Location = location;
             BingMap.Children.Add(newPin);
+        }
+
+        private void NewPin_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var test = (sender as OurPushpin).SensorId;
         }
 
         private void RelocatePin(Location oldLocation, Location newLocation)

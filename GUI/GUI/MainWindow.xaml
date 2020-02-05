@@ -58,7 +58,7 @@
             <DataGrid Name="reportGrid" IsReadOnly="True" Grid.Row="0" CanUserAddRows="False" ItemsSource="{Binding ListTickOfSensors}" CanUserDeleteRows="False" EnableRowVirtualization="False" AutoGenerateColumns="False" Padding="20,20">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="*" MinWidth="50" />
-                    <DataGridTextColumn Header="Acceptable range" IsReadOnly="True" Binding="{Binding Path=Location}" Width="*" MinWidth="30" />
+                    <DataGridTextColumn Header="Acceptable range" IsReadOnly="True" Binding="{Binding Path=AcceptableValues}" Width="*" MinWidth="30" />
                     <DataGridTextColumn Header="Value" IsReadOnly="True" Binding="{Binding Path=Value}" Width="*" MinWidth="50" />
                 </DataGrid.Columns>
             </DataGrid>

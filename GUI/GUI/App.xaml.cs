@@ -14,6 +14,16 @@ namespace GUI
     public partial class App : Application
     {
         //event handler for user friendly window when something crash
-        
+        public App()
+        {
+            this.DispatcherUnhandledException += App_DispatcherUnhandledException;
+        }
+
+        private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            throw new NotImplementedException();
+            MessageBox.Show("Error");
+            this.Shutdown();
+        }
     }
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GUI"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         mc:Ignorable="d"
-        Title="HumidityGraphicalRepresentation" Height="450" Width="800">
+        Title="Humidity Graphical Representation" Height="450" Width="800">
     <Grid x:Name="testGrid">
         <telerik:RadVerticalLinearGauge Grid.Row="0" Grid.RowSpan="2"
 									    Grid.Column="2" 
@@ -14,7 +14,8 @@
             <telerik:VerticalLinearScale Min="0" Max="100" 
 										 MajorTicks="4" 
                                          RangeLocation="OverOutside"
-                                         RangeOffset="0.03*">
+                                         RangeOffset="0.03*"
+                                         LabelFormat="{}{0}%">
                 <telerik:VerticalLinearScale.Ranges>
                     <telerik:GaugeRange x:Name="linearGaugeRange1" Min="0" Max="40" StartWidth="0.02" EndWidth="0.05" />
                     <telerik:GaugeRange x:Name="linearGaugeRange2" Min="40" Max="80" StartWidth="0.05" EndWidth="0.08" />
@@ -24,7 +25,8 @@
                     <telerik:Marker Name="marker"
                         Value="{Binding Value}"
                         IsAnimated="True"
-                        Duration="0:0:1"  />
+                        Duration="0:0:1"
+                                    />
                 </telerik:VerticalLinearScale.Indicators>
                 <telerik:VerticalLinearScale.CustomItems>
                     <Border BorderThickness="1,0,0,0"
@@ -32,7 +34,7 @@
                             telerik:ScaleObject.Location="OverCenter"
                             telerik:ScaleObject.RelativeHeight="0.8*"
                             telerik:ScaleObject.RelativeWidth="0.14*"/>
-                    <TextBlock Text="%"  
+                    <TextBlock 
                                telerik:ScaleObject.RelativeX="0.2"
                                FontFamily="Segoe UI Semibold"/>
                 </telerik:VerticalLinearScale.CustomItems>
@@ -45,7 +47,9 @@
 									     MajorTickRelativeHeight="0.005*"
 									     MajorTickBackground="White"
 									     MajorTickLocation="OverCenter"
-									     Fill="Transparent"/>
+									     Fill="Transparent"
+                                         LabelFormat="{}{0}%"/>
         </telerik:RadVerticalLinearGauge>
+        <TextBlock Text="Graphical representation of Humidity sensor" Margin="289,58,253,339"/>
     </Grid>
 </Window>

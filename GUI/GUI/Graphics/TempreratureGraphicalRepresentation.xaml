@@ -6,8 +6,18 @@
         xmlns:local="clr-namespace:GUI"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         mc:Ignorable="d"
-        Title="TempreratureGraphicalRepresentation" Height="450" Width="800">
+        Title="Temprerature Graphical Representation" Height="450" Width="800">
     <Grid>
+        <TextBlock  HorizontalAlignment="Center" Margin="243,16,282,378" Width="267" Text=" Graphical representation of 
+Temperature sensor">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.085"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform></TextBlock>
         <telerik:RadVerticalLinearGauge Width="24" Height="327" telerik:StyleManager.Theme="Windows8">
             <telerik:VerticalLinearScale  Name="linearScaleC" 
                                 Min="-30" 
@@ -30,15 +40,16 @@
                                 LabelLocation="Outside" 
                                 Fill="Transparent" 
                                 Stroke="Transparent" 
-                                IsInteractive="True">
+                                IsInteractive="True"
+                                LabelFormat="{}{0} C" Margin="-16,0">
                 <telerik:VerticalLinearScale.Ranges>
                     <telerik:GaugeRange x:Name="coldRange" 
                                 Min="-22" 
                                 Max="20" 
                                 StartWidth="10" 
                                 EndWidth="0" 
-                                        TickBackground="Gray"
-                                IndicatorBackground="#FF3ABF15" />
+                                TickBackground="Gray"
+                                IndicatorBackground="#FF3ABF15"     />
                     <telerik:GaugeRange x:Name="overheatRange" 
                                 Min="21" 
                                 Max="104" 
@@ -53,8 +64,9 @@
                                           Value="{Binding Value}" 
                                           StrokeThickness="1" 
                                           StartWidth="0.42" 
-                                          EndWidth="0.42" />
+                                          EndWidth="0.42" Margin="10,0,-10,0"/>
                 </telerik:VerticalLinearScale.Indicators>
+
             </telerik:VerticalLinearScale>
         </telerik:RadVerticalLinearGauge>
     </Grid>

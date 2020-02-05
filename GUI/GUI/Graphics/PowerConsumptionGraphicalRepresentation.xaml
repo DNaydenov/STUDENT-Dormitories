@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GUI"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         mc:Ignorable="d"
-        Title="PowerConsumptionGraphicalRepresentation" Height="450" Width="800">
+        Title="Power Consumption Graphical Representation" Height="450" Width="800">
     <Grid>
         <Canvas>
             <telerik:RadRadialGauge  Canvas.Top="50" Canvas.Left="250" Name="radialGauge" 
@@ -15,9 +15,10 @@
                 <telerik:RadialScale Name="scale"
                     Min="0" 
                     Max="4000"
-                    LabelFormat="{}{0}" 
+                    LabelFormat="{}{0} W" 
                     Foreground="Red"
                     Background="Orange">
+
                     <telerik:RadialScale.Indicators>
                         <telerik:Needle Name="needle" Value="{Binding Value}" Background="Black" IsAnimated="True" Duration="0:0:1"/>
                         <telerik:Pinpoint />
@@ -25,5 +26,7 @@
                 </telerik:RadialScale>
             </telerik:RadRadialGauge>
         </Canvas>
+        <TextBlock  HorizontalAlignment="Center" Margin="243,16,231,378" Width="318" Text=" Graphical representation of 
+Power Consumption sensor"/>
     </Grid>
 </Window>

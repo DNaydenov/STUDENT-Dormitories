@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GUI"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         mc:Ignorable="d"
-        Title="GraphicalRepresentationWindow" Height="450" Width="800">
+        Title="Graphical representation of Noise Sensor" Height="450" Width="800">
     <Grid>
         <Canvas>
             <telerik:RadRadialGauge  Canvas.Top="50" Canvas.Left="250" Name="radialGauge" 
@@ -15,7 +15,7 @@
                 <telerik:RadialScale Name="scale" 
                     Min="0" 
                     Max="150"
-                    LabelFormat="{}{0}" 
+                    LabelFormat="{}{0} dB" 
                     Foreground="Red"
                     Background="Orange">
                     <telerik:RadialScale.Indicators>
@@ -25,6 +25,7 @@
                 </telerik:RadialScale>
             </telerik:RadRadialGauge>
         </Canvas>
+        <TextBlock Text="Graphical representation of Noise sensor" Margin="291,26,258,371"/>
     </Grid>
 
 </Window>

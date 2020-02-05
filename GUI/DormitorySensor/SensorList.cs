@@ -13,8 +13,6 @@ namespace DormitorySensor
     {
         private static readonly string cstPath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "SensorList.xml");
 
-        private static object _sync = new object();
-
         static SensorList()
         {
             ListSensors = new ObservableCollection<Sensor>();
@@ -106,21 +104,13 @@ namespace DormitorySensor
             }
 
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="e"></param>
+
         public async static void RefreshSensors(Object source, System.Timers.ElapsedEventArgs e)
         {
-          // var value = await SensorProcessor.LoadSensorInfo(sensor.SensorId.ToString(), sensor.Type.ToDescriptionString().ToLower());
-            //lock (_sync)
-            //{
                 foreach (var sensor in ListSensors.ToList())
                 {
                     sensor.Value = await SensorProcessor.LoadSensorInfo(sensor.SensorId.ToString(), sensor.Type.ToDescriptionString().ToLower());                
                 }
-           // }
           
         }
     }

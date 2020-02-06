@@ -11,7 +11,9 @@ namespace DormitorySensor
 {
     public static class SensorList
     {
-        private static readonly string cstPath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "SensorList.xml");
+        private static readonly string cstPath = Path.Combine(
+            Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
+            "SensorList.xml");
 
         static SensorList()
         {
@@ -48,6 +50,11 @@ namespace DormitorySensor
             sensorToModify.AcceptableValues = acceptableValues;
 
             sensorToModify.TickOf = sensorToModify.IsValueOutOfRange(sensorToModify.Value, acceptableValues);
+            ModifyListTickOf(tickOfBeforeModify, sensorToModify);
+        }
+
+        private static void ModifyListTickOf(bool tickOfBeforeModify, Sensor sensorToModify)
+        {
             if (!tickOfBeforeModify && sensorToModify.TickOf)
             {
                 ListTickOfSensors.Add(sensorToModify);
@@ -102,16 +109,20 @@ namespace DormitorySensor
                     AddSensor(name, sensorId, value, type, desc, location, acceptableValues);
                 }
             }
-
         }
 
         public async static void RefreshSensors(Object source, System.Timers.ElapsedEventArgs e)
         {
-                foreach (var sensor in ListSensors.ToList())
-                {
-                    sensor.Value = await SensorProcessor.LoadSensorInfo(sensor.SensorId.ToString(), sensor.Type.ToDescriptionString().ToLower());                
-                }
-          
+            foreach (var sensor in ListSensors.ToList())
+            {
+                //Problems with UI thread
+
+                //var tickOfBeforeModify = sensor.TickOf;
+                sensor.Value = await SensorProcessor.LoadSensorInfo(sensor.SensorId.ToString(), sensor.Type.ToDescriptionString().ToLower());
+                //sensor.TickOf = sensor.IsValueOutOfRange(sensor.Value, sensor.AcceptableValues);
+                //ModifyListTickOf(tickOfBeforeModify, sensor);
+            }
         }
+
     }
 }

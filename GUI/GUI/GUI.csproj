@@ -116,7 +116,7 @@
     <Compile Include="Graphics\HumidityGraphicalRepresentation.xaml.cs">
       <DependentUpon>HumidityGraphicalRepresentation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Graphics\OurPushpin.cs" />
+    <Compile Include="OurPushpin.cs" />
     <Compile Include="Graphics\PowerConsumptionGraphicalRepresentation.xaml.cs">
       <DependentUpon>PowerConsumptionGraphicalRepresentation.xaml</DependentUpon>
     </Compile>
@@ -160,7 +160,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

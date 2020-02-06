@@ -21,7 +21,7 @@ namespace GUI
 
         private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
             MessageBox.Show("Error");
             this.Shutdown();
         }

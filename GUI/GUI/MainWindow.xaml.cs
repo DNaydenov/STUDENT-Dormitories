@@ -31,31 +31,37 @@ namespace GUI
         public MainWindow()
         {
             InitializeComponent();
-            InitMap();
             //Http client is initialized at the start of our app
             ApiHelper.InitializeClient();
             dataGrid.ItemsSource = SensorList.ListSensors;
             reportGrid.ItemsSource = SensorList.ListTickOfSensors;
             SensorList.LoadXmlFile();
 
-            foreach (var location in SensorList.ListSensors.Select(x => new Location(x.Location.latitude, x.Location.longtitude)))
-            {
-                AddPushpinToMap(location);
-            }
+            InitMap();
         }
+
         public void InitMap()
         {
             BingMap.ZoomLevel = 5;
             //Sofia location
             BingMap.Center = new Location(42.698334, 23.319941);
-        }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
+            foreach (var sensor in SensorList.ListSensors)
+            {
+                AddPushpinToMap(sensor);
+            }
+
             timer = new System.Timers.Timer(10000);
             timer.Elapsed += SensorList.RefreshSensors;
             timer.AutoReset = true;
             timer.Enabled = true;
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //if we have large XML file this method is called before reading the whole file
+            //to remove ?
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
@@ -68,8 +74,7 @@ namespace GUI
         {
             AddModifySensorWindow AddSensorWindow = new AddModifySensorWindow((sender as Button).Content.ToString());
             AddSensorWindow.ShowDialog();
-            var pinLocation = SensorList.ListSensors.Last().Location;
-            AddPushpinToMap(new Location(pinLocation.latitude, pinLocation.latitude));
+            AddPushpinToMap(SensorList.ListSensors.Last());
         }
 
         private void Modify_Click(object sender, RoutedEventArgs e)
@@ -89,12 +94,10 @@ namespace GUI
             var oldLocation = new Location(sensorToModify.Location.latitude, sensorToModify.Location.longtitude);
             ModifySensorWindow.ShowDialog();
             var newLocation = new Location(sensorToModify.Location.latitude, sensorToModify.Location.longtitude);
-            //dataGrid.ItemsSource = null;
             if (!oldLocation.Equals(newLocation))
             {
                 RelocatePin(oldLocation, newLocation);
             }
-            //dataGrid.Items.Refresh();
         }
 
         private void Remove_Click(object sender, RoutedEventArgs e)
@@ -102,26 +105,27 @@ namespace GUI
             SensorList.Remove((Sensor)dataGrid.SelectedItem);
         }
 
-        private void AddPushpinToMap(Location location)
+        private void AddPushpinToMap(Sensor sensor)
         {
             OurPushpin newPin = new OurPushpin();
-            newPin.SensorId = Guid.NewGuid();
-            newPin.MouseDoubleClick += NewPin_MouseDoubleClick;
-            newPin.Location = location;
+            newPin.SensorId = sensor.SensorId;
+            newPin.Location = new Location(sensor.Location.latitude, sensor.Location.longtitude);
             BingMap.Children.Add(newPin);
+            newPin.MouseDoubleClick += NewPin_MouseDoubleClick;
         }
 
         private void NewPin_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var test = (sender as OurPushpin).SensorId;
+            var pushpinId = (sender as OurPushpin).SensorId;
+            var sensor = SensorList.ListSensors.Where(x => x.SensorId == pushpinId).FirstOrDefault();
+            ShowGraphics(sensor);
         }
 
         private void RelocatePin(Location oldLocation, Location newLocation)
         {
             var oldPin = BingMap.Children.OfType<Pushpin>()
                 .Where(x => x.Location.Latitude == oldLocation.Latitude && x.Location.Longitude == oldLocation.Longitude).FirstOrDefault();
-            BingMap.Children.Remove(oldPin);
-            AddPushpinToMap(newLocation);
+            oldPin.Location = newLocation;
         }
 
         public static void LoadComboBoxItems(ComboBox cbo)
@@ -142,36 +146,43 @@ namespace GUI
         private void btnView_Click(object sender, RoutedEventArgs e)
         {
             var selectedSensor = (Sensor)dataGrid.SelectedItem;
-            if(selectedSensor.Type == sensorType.Noise)
+            ShowGraphics(selectedSensor);
+        }
+
+        private void ShowGraphics(Sensor sensor)
+        {
+            switch (sensor.Type)
             {
-                NoiseGraphicalRepresentation noiseGraphics = new NoiseGraphicalRepresentation(selectedSensor);
-                noiseGraphics.ShowDialog();
-            }
-            else if(selectedSensor.Type == sensorType.Window)
-            {
-                if(selectedSensor.Value == 1)
-                {
-                    MessageBox.Show("The senosor indicates that the window is opened");
-                }
-                else
-                {
-                    MessageBox.Show("The senosor indicates that the window is closed");
-                }
-            }
-            else if (selectedSensor.Type == sensorType.Humidity)
-            {
-                HumidityGraphicalRepresentation humidityGraphics = new HumidityGraphicalRepresentation(selectedSensor);
-                humidityGraphics.ShowDialog();
-            }
-            else if (selectedSensor.Type == sensorType.ElPowerConsumption)
-            {
-                PowerConsumptionGraphicalRepresentation pwrGraphics = new PowerConsumptionGraphicalRepresentation(selectedSensor);
-                pwrGraphics.ShowDialog();
-            }
-            else
-            {
-                TempreratureGraphicalRepresentation temperatureGraphics = new TempreratureGraphicalRepresentation(selectedSensor);
-                temperatureGraphics.ShowDialog();
+                case sensorType.Temperature:
+                    TempreratureGraphicalRepresentation temperatureGraphics = new TempreratureGraphicalRepresentation(sensor);
+                    temperatureGraphics.ShowDialog();
+                    break;
+                case sensorType.Humidity:
+                    HumidityGraphicalRepresentation humidityGraphics = new HumidityGraphicalRepresentation(sensor);
+                    humidityGraphics.ShowDialog();
+                    break;
+                case sensorType.ElPowerConsumption:
+                    PowerConsumptionGraphicalRepresentation pwrGraphics = new PowerConsumptionGraphicalRepresentation(sensor);
+                    pwrGraphics.ShowDialog();
+                    break;
+                case sensorType.Window:
+                    string message = "The sensor indicates that the window is ";
+                    if(sensor.Value == 1)
+                    {
+                        MessageBox.Show(message + "opened");
+                    }
+                    else
+                    {
+                        MessageBox.Show(message + "closed");
+                    }
+                    break;
+                case sensorType.Noise:
+                    NoiseGraphicalRepresentation noiseGraphics = new NoiseGraphicalRepresentation(sensor);
+                    noiseGraphics.ShowDialog();
+                    break;
+                default:
+                    MessageBox.Show("Error! No such sensor type");
+                    break;
             }
         }
     }

@@ -17,4 +17,3 @@ C:\Users\admin071018\source\repos\STUDENT-Dormitories\GUI\DormitorySensor\obj\De
 C:\Users\admin071018\source\repos\STUDENT-Dormitories\GUI\DormitorySensor\obj\Debug\DormitorySensor.csproj.CopyComplete
 C:\Users\admin071018\source\repos\STUDENT-Dormitories\GUI\DormitorySensor\obj\Debug\DormitorySensor.dll
 C:\Users\admin071018\source\repos\STUDENT-Dormitories\GUI\DormitorySensor\obj\Debug\DormitorySensor.pdb
-C:\Users\User\STUDENT-Dormitories\GUI\DormitorySensor\obj\Debug\DormitorySensor.csprojAssemblyReference.cache

@@ -140,7 +140,7 @@ namespace DormitorySensor
 
         public bool IsValueOutOfRange(int value, (double min, double max) AcceptableValues)
         {
-            return (value >= acceptableValues.min && value <= acceptableValues.min) ? false : true;
+            return (value >= acceptableValues.min && value <= acceptableValues.max) ? false : true;
         }
         protected void OnPropertyChanged(string name)
         {

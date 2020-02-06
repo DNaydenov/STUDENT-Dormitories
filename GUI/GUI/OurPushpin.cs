@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace GUI.Graphics
 {
-    public class OurPushpin : Pushpin
+    internal class OurPushpin : Pushpin
     {
-        public Guid SensorId { get; set; }
+        internal Guid SensorId { get; set; }
     }
 }

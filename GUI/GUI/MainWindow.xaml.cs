@@ -36,6 +36,7 @@ namespace GUI
             dataGrid.ItemsSource = SensorList.ListSensors;
             reportGrid.ItemsSource = SensorList.ListTickOfSensors;
             SensorList.LoadXmlFile();
+            
 
             InitMap();
         }
@@ -52,10 +53,18 @@ namespace GUI
             }
 
             timer = new System.Timers.Timer(10000);
-            timer.Elapsed += SensorList.RefreshSensors;
+            timer.Elapsed += RefreshSensorsWraper;
             timer.AutoReset = true;
             timer.Enabled = true;
+        }
 
+        private void RefreshSensorsWraper(Object source, System.Timers.ElapsedEventArgs e)
+        {
+            Application.Current.Dispatcher.Invoke(new Action(() =>
+            {
+                SensorList.RefreshSensors();
+            }
+            ));
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

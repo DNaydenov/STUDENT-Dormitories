@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SensorList>
-  <Sensor Name="humidity" SensorId="8d701424-bd9e-42d2-8413-dd32e8441c60" Type="Humidity" Value="94" Description="humid">
+  <Sensor Name="humidity" SensorId="8d701424-bd9e-42d2-8413-dd32e8441c60" Type="Humidity" Value="71" Description="humid">
     <Location Latitude="43" Longtitude="24" />
     <AcceptableValues MinValue="0" MaxValue="2300" />
   </Sensor>
-  <Sensor Name="temp" SensorId="52bfbca7-30f0-4503-935b-eaebf3778ab7" Type="Temperature" Value="24" Description="temp">
+  <Sensor Name="temp" SensorId="52bfbca7-30f0-4503-935b-eaebf3778ab7" Type="Temperature" Value="-4" Description="temp">
     <Location Latitude="23" Longtitude="45" />
     <AcceptableValues MinValue="12" MaxValue="23" />
   </Sensor>
-  <Sensor Name="elPower" SensorId="a9c114d8-f106-4316-a985-dbe7ecb97569" Type="ElPowerConsumption" Value="2476" Description="asd">
+  <Sensor Name="elPower" SensorId="a9c114d8-f106-4316-a985-dbe7ecb97569" Type="ElPowerConsumption" Value="160" Description="asd">
     <Location Latitude="2" Longtitude="34" />
     <AcceptableValues MinValue="44" MaxValue="324" />
   </Sensor>
-  <Sensor Name="Noise" SensorId="367152fe-94fe-4cb1-bddb-77b3c0930c92" Type="Noise" Value="50" Description="asd">
+  <Sensor Name="Noise" SensorId="367152fe-94fe-4cb1-bddb-77b3c0930c92" Type="Noise" Value="80" Description="asd">
     <Location Latitude="21" Longtitude="23" />
     <AcceptableValues MinValue="0" MaxValue="234" />
   </Sensor>

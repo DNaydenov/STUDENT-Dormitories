@@ -111,16 +111,14 @@ namespace DormitorySensor
             }
         }
 
-        public async static void RefreshSensors(Object source, System.Timers.ElapsedEventArgs e)
+        public async static void RefreshSensors()
         {
             foreach (var sensor in ListSensors.ToList())
             {
-                //Problems with UI thread
-
-                //var tickOfBeforeModify = sensor.TickOf;
+                var tickOfBeforeModify = sensor.TickOf;
                 sensor.Value = await SensorProcessor.LoadSensorInfo(sensor.SensorId.ToString(), sensor.Type.ToDescriptionString().ToLower());
-                //sensor.TickOf = sensor.IsValueOutOfRange(sensor.Value, sensor.AcceptableValues);
-                //ModifyListTickOf(tickOfBeforeModify, sensor);
+                sensor.TickOf = sensor.IsValueOutOfRange(sensor.Value, sensor.AcceptableValues);
+                ModifyListTickOf(tickOfBeforeModify, sensor);
             }
         }
 

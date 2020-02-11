@@ -50,6 +50,6 @@
 									     Fill="Transparent"
                                          LabelFormat="{}{0}%"/>
         </telerik:RadVerticalLinearGauge>
-        <TextBlock Text="Graphical representation of Humidity sensor" Margin="289,58,253,339"/>
+        <TextBlock Text="Graphical representation of Humidity sensor" Margin="289,50,253,340"/>
     </Grid>
 </Window>

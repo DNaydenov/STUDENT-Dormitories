@@ -10,7 +10,7 @@
         mc:Ignorable="d"
         Loaded="Window_Loaded"
         Closing="Window_Closing"
-        Title="MainWindow" Height="450" Width="800"  MinHeight="300" MinWidth="550">
+        Title="DormitorySensors" Height="450" Width="800"  MinHeight="300" MinWidth="550">
     <TabControl Margin="0">
 
         <TabItem Name="MapView" Header="Map view" IsSelected="False">
@@ -23,15 +23,15 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="5*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
                 <DataGrid Name="dataGrid" IsReadOnly="True" Grid.Row="0" CanUserAddRows="False" ItemsSource="{Binding ListSensors}" CanUserDeleteRows="False" EnableRowVirtualization="False" AutoGenerateColumns="False" Padding="20,20">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="150" MinWidth="30" />
-                        <DataGridTextColumn Header="Description" IsReadOnly="True" Binding="{Binding Path=Description}" Width="300" MinWidth="30" />
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="200" MinWidth="70" />
+                        <DataGridTextColumn Header="Description" IsReadOnly="True" Binding="{Binding Path=Description}" Width="*" MinWidth="70" />
                         <DataGridTextColumn Header="Value" IsReadOnly="True" Binding="{Binding Path=Value}" Width="50" MinWidth="30" />
 
-                        <DataGridTemplateColumn Header="Graphics" IsReadOnly="True" Width="*" MinWidth="30">
+                        <DataGridTemplateColumn Header="Graphics" IsReadOnly="True" Width="120" MinWidth="70">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Name="btnView" Content="View" Click="btnView_Click" />
@@ -41,15 +41,15 @@
 
                     </DataGrid.Columns>
                 </DataGrid>
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="1" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Button Name="btnAdd" Content="Add" FontSize="20" Grid.Column="0" Width="100" Height="50" Click="Add_Click" />
-                    <Button Name="btnModify" Content="Modify" FontSize="20" Grid.Column="1" Width="100" Height="50" Click="Modify_Click" />
-                    <Button Name="btnRemove" Content="Remove" FontSize="20" Grid.Column="2" Width="100" Height="50" Click="Remove_Click" />
+                    <Button Name="btnAdd" Content="Add" FontSize="20" Grid.Column="0" Width="80" Height="40" Click="Add_Click" />
+                    <Button Name="btnModify" Content="Modify" FontSize="20" Grid.Column="1" Width="80" Height="40" Click="Modify_Click" />
+                    <Button Name="btnRemove" Content="Remove" FontSize="20" Grid.Column="2" Width="80" Height="40" Click="Remove_Click" />
                 </Grid>
 
             </Grid>
@@ -58,8 +58,8 @@
             <DataGrid Name="reportGrid" IsReadOnly="True" Grid.Row="0" CanUserAddRows="False" ItemsSource="{Binding ListTickOfSensors}" CanUserDeleteRows="False" EnableRowVirtualization="False" AutoGenerateColumns="False" Padding="20,20">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="*" MinWidth="50" />
-                    <DataGridTextColumn Header="Acceptable range" IsReadOnly="True" Binding="{Binding Path=AcceptableValues}" Width="*" MinWidth="30" />
-                    <DataGridTextColumn Header="Value" IsReadOnly="True" Binding="{Binding Path=Value}" Width="*" MinWidth="50" />
+                    <DataGridTextColumn Header="Acceptable range" IsReadOnly="True" Binding="{Binding Path=AcceptableValues}" Width="150" MinWidth="50" />
+                    <DataGridTextColumn Header="Value" IsReadOnly="True" Binding="{Binding Path=Value}" Width="100" MinWidth="50" />
                 </DataGrid.Columns>
             </DataGrid>
         </TabItem>

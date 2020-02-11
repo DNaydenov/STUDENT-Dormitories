@@ -20,8 +20,8 @@ Temperature sensor">
             </TextBlock.RenderTransform></TextBlock>
         <telerik:RadVerticalLinearGauge Width="24" Height="327" telerik:StyleManager.Theme="Windows8">
             <telerik:VerticalLinearScale  Name="linearScaleC" 
-                                Min="-30" 
-                                Max="40" 
+                                Min="-20" 
+                                Max="50" 
                                 RelativeY="0.05" 
                                 RelativeHeight="0.85" 
                                 StartWidth="1" 
@@ -41,7 +41,7 @@ Temperature sensor">
                                 Fill="Transparent" 
                                 Stroke="Transparent" 
                                 IsInteractive="True"
-                                LabelFormat="{}{0} C" Margin="-16,0">
+                                LabelFormat="{}{0} C " Margin="-5,0">
                 <telerik:VerticalLinearScale.Ranges>
                     <telerik:GaugeRange x:Name="coldRange" 
                                 Min="-22" 

@@ -14,7 +14,7 @@
                     Height="300">
                 <telerik:RadialScale Name="scale"
                     Min="0" 
-                    Max="4000"
+                    Max="4400"
                     LabelFormat="{}{0} W" 
                     Foreground="Red"
                     Background="Orange">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -18,8 +19,8 @@ namespace DormitorySensor
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    Sensor result = await response.Content.ReadAsAsync<Sensor>();
-                    return result.Value;
+                    var result = await response.Content.ReadAsAsync<dynamic>();
+                    return Convert.ToInt32(result["value"]);
                 }
                 else
                 {

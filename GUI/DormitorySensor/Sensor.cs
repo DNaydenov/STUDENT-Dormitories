@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DormitorySensor
 {
@@ -63,10 +59,10 @@ namespace DormitorySensor
         //{
 
         //}
-        //public Sensor() : this(null, null, 0, 0.0, 0.0, null)//don't sure have to exist
-        //{
+        public Sensor() : this("", Guid.NewGuid(), 0, sensorType.ElPowerConsumption, "", (0, 0), (0, 0))//TEST FOR DATA BINDING
+        {
 
-        //}
+        }
         #endregion
 
         #region Props
@@ -74,10 +70,7 @@ namespace DormitorySensor
 
         public string Name
         {
-            get
-            {
-                return name;
-            }
+            get { return name; }
             set
             {
                 name = value;
@@ -89,10 +82,7 @@ namespace DormitorySensor
 
         public int Value
         {
-            get
-            {
-                return value;
-            }
+            get { return value; }
             set
             {
                 this.value = value;
@@ -104,10 +94,7 @@ namespace DormitorySensor
 
         public string Description
         {
-            get
-            {
-                return description;
-            }
+            get { return description; }
             set
             {
                 description = value;
@@ -118,36 +105,26 @@ namespace DormitorySensor
         public (double latitude, double longtitude) Location
         {
             get { return location; }
-            set { location = value; }
+            set
+            {
+                location = value;
+                OnPropertyChanged("Location");
+            }
         }
 
         public (double min, double max) AcceptableValues
         {
-            get { return (acceptableValues.min, acceptableValues.max); }
+            get { return acceptableValues; }
             set
             {
-                if (value.min < value.max)
-                {
-                    acceptableValues = (value.min, value.max);
-                }
-                else
-                {
-                    acceptableValues = (value.max, value.min);
-                }
+                acceptableValues = value.min > value.max ? (value.max, value.min) : (value.min, value.max);
+                OnPropertyChanged("AcceptableValues");
             }
         }
         #endregion
 
-        public bool IsValueOutOfRange(int value, (double min, double max) AcceptableValues)
-        {
-            return (value >= acceptableValues.min && value <= acceptableValues.max) ? false : true;
-        }
-        protected void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
+        internal bool IsValueOutOfRange(int value, (double min, double max) AcceptableValues) =>
+            (value >= acceptableValues.min && value <= acceptableValues.max) ? false : true;
+        protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 }

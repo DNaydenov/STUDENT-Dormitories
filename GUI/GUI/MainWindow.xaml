@@ -4,18 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF" x:Class="GUI.MainWindow"
-        
-        
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Loaded="Window_Loaded"
         Closing="Window_Closing"
         Title="DormitorySensors" Height="450" Width="800"  MinHeight="300" MinWidth="550">
     <TabControl Margin="0">
 
         <TabItem Name="MapView" Header="Map view" IsSelected="False">
             <Grid>
-                <m:Map Name="BingMap" CredentialsProvider="Ot3otvT4DLmDPUiFS6SC~yhCCJXsMfz8yzxrGa_E-QA~AiAehwfjDbOcZr3pz_GGGSxcCLrOTeU04Vjf2psBAHyPDnZ-N9Ps9MCV1h1FSlud"/>
+                <m:Map Name="BingMap" ZoomLevel="5" CredentialsProvider="Ot3otvT4DLmDPUiFS6SC~yhCCJXsMfz8yzxrGa_E-QA~AiAehwfjDbOcZr3pz_GGGSxcCLrOTeU04Vjf2psBAHyPDnZ-N9Ps9MCV1h1FSlud"/>
             </Grid>
         </TabItem>
 
@@ -25,7 +22,8 @@
                     <RowDefinition Height="5*"/>
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
-                <DataGrid Name="dataGrid" IsReadOnly="True" Grid.Row="0" CanUserAddRows="False" ItemsSource="{Binding ListSensors}" CanUserDeleteRows="False" EnableRowVirtualization="False" AutoGenerateColumns="False" Padding="20,20">
+                <DataGrid Name="dataGrid" IsReadOnly="True" Grid.Row="0" CanUserAddRows="False" SelectionMode="Single" ItemsSource="{Binding ListSensors}"
+                          CanUserDeleteRows="False" EnableRowVirtualization="False" AutoGenerateColumns="False" Padding="20,20">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="200" MinWidth="70" />
                         <DataGridTextColumn Header="Description" IsReadOnly="True" Binding="{Binding Path=Description}" Width="*" MinWidth="70" />
@@ -48,8 +46,28 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Button Name="btnAdd" Content="Add" FontSize="20" Grid.Column="0" Width="80" Height="40" Click="Add_Click" />
-                    <Button Name="btnModify" Content="Modify" FontSize="20" Grid.Column="1" Width="80" Height="40" Click="Modify_Click" />
-                    <Button Name="btnRemove" Content="Remove" FontSize="20" Grid.Column="2" Width="80" Height="40" Click="Remove_Click" />
+                    <Button Name="btnModify" Content="Modify" FontSize="20" Grid.Column="1" Width="80" Height="40" Click="Modify_Click" >
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SelectedItems.Count,ElementName=dataGrid}" Value="0">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Name="btnRemove" Content="Remove" FontSize="20" Grid.Column="2" Width="80" Height="40" Click="Remove_Click" >
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SelectedItems.Count,ElementName=dataGrid}" Value="0">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                 </Grid>
 
             </Grid>

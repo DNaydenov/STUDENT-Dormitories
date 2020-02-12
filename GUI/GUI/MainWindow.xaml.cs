@@ -1,21 +1,11 @@
 ﻿using DormitorySensor;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Microsoft.Maps.MapControl.WPF;
 using System.ComponentModel;
-using System.Threading;
 using System.Data;
 using GUI.Graphics;
 
@@ -36,14 +26,13 @@ namespace GUI
             dataGrid.ItemsSource = SensorList.ListSensors;
             reportGrid.ItemsSource = SensorList.ListTickOfSensors;
             SensorList.LoadXmlFile();
-            
 
             InitMap();
+            InitTimer(10000);
         }
 
         public void InitMap()
         {
-            BingMap.ZoomLevel = 5;
             //Sofia location
             BingMap.Center = new Location(42.698334, 23.319941);
 
@@ -51,8 +40,11 @@ namespace GUI
             {
                 AddPushpinToMap(sensor);
             }
+        }
 
-            timer = new System.Timers.Timer(10000);
+        private void InitTimer(int interval)
+        {
+            timer = new System.Timers.Timer(interval);
             timer.Elapsed += RefreshSensorsWraper;
             timer.AutoReset = true;
             timer.Enabled = true;
@@ -63,14 +55,7 @@ namespace GUI
             Application.Current.Dispatcher.Invoke(new Action(() =>
             {
                 SensorList.RefreshSensors();
-            }
-            ));
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            //if we have large XML file this method is called before reading the whole file
-            //to remove ?
+            }));
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
@@ -143,7 +128,8 @@ namespace GUI
                 .Cast<Enum>()
                 .Select(value => new
                 {
-                    (Attribute.GetCustomAttribute(value.GetType().GetField(value.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description,
+                    (Attribute.GetCustomAttribute(value.GetType().GetField(value.ToString()),
+                    typeof(DescriptionAttribute)) as DescriptionAttribute).Description,
                     value
                 })
                 .OrderBy(item => item.value)
@@ -176,7 +162,7 @@ namespace GUI
                     break;
                 case sensorType.Window:
                     string message = "The sensor indicates that the window is ";
-                    if(sensor.Value == 1)
+                    if (sensor.Value == 1)
                     {
                         MessageBox.Show(message + "opened");
                     }
@@ -195,5 +181,4 @@ namespace GUI
             }
         }
     }
-
 }

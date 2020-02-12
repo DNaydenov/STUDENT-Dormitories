@@ -1,23 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using System.Windows.Controls;
 
 namespace DormitorySensor.UserInputValidation
 {
     public class SensorNameValidation : ValidationRule
     {
-        //private const string cstName = "name";
-        //private const string cstLatitude = "latitude";
-        //private const string cstLongtitude = "longtitude";
-        //private const string cstMinValue = "min value";
-        //private const string cstMaxValue = "max value";
-        //private const string cstDescription = "description";
-        //private const string csr = "description";
-
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             var name = value.ToString();
@@ -48,7 +35,7 @@ namespace DormitorySensor.UserInputValidation
             }
 
             double latitude;
-            if(double.TryParse(stringValue, out latitude))
+            if (double.TryParse(stringValue, out latitude))
             {
                 if (latitude > 90)
                 {

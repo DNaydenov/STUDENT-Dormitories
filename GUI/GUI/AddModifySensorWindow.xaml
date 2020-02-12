@@ -107,8 +107,46 @@
         </TextBox>
         <ComboBox  Name="CBoxType" Height="30" FontSize="18" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" Margin=" 20"/>
 
-        <Button Name="btnConfirmAdd" Content="Add Sensor" Visibility="Hidden" Height="40" Width="130" FontSize="22" Grid.Column="2" Grid.Row="0" Click="ConfirmAdd_Click"/>
-        <Button Name="btnConfirmModify" Content="Modify" Visibility="Hidden" Height="40" Width="130" FontSize="22" Grid.Column="2" Grid.Row="0" Click="ConfirmModify_Click" />
+        <Button Name="btnConfirmAdd" Content="Add Sensor" Visibility="Hidden" Height="40" Width="130" FontSize="22" Grid.Column="2" Grid.Row="0" Click="ConfirmAdd_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=txtName}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=txtLatitude}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=txtLongtitude}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=txtMinValue}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=txtMaxValue}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=txtDescription}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Name="btnConfirmModify" Content="Modify" Visibility="Hidden" Height="40" Width="130" FontSize="22" Grid.Column="2" Grid.Row="0" Click="ConfirmModify_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=txtName}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=txtLatitude}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=txtLongtitude}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=txtMinValue}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=txtMaxValue}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=txtDescription}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
         <Button Name="btnClearAddData" Content="Clear Data" Height="40" Width="130" FontSize="22" Grid.Column="2" Grid.Row="1" Click="ClearAddData_Click" />
         <Button Name="btnCancelAdd" Content="Cancel" IsCancel="True" Height="40" Width="130" FontSize="22" Grid.Column="2" Grid.Row="2" />
     </Grid>

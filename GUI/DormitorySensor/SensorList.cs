@@ -64,48 +64,56 @@ namespace DormitorySensor
 
         public static void SaveSensorListToXmlFile()
         {
-            XDocument doc = new XDocument();
-            XElement root = new XElement("SensorList");
-            foreach (var sensors in ListSensors)
+            try
             {
-                XElement sensor =
-                    new XElement("Sensor",
-                        new XAttribute("Name", sensors.Name),
-                        new XAttribute("SensorId", sensors.SensorId),
-                        new XAttribute("Type", sensors.Type.ToString()),
-                        new XAttribute("Value", sensors.Value),
-                        new XAttribute("Description", sensors.Description),
-                            new XElement("Location",
-                                new XAttribute("Latitude", sensors.Location.latitude),
-                                new XAttribute("Longtitude", sensors.Location.longtitude)),
-                            new XElement("AcceptableValues",
-                                new XAttribute("MinValue", sensors.AcceptableValues.min),
-                                new XAttribute("MaxValue", sensors.AcceptableValues.max)));
-                root.Add(sensor);
+                XDocument doc = new XDocument();
+                XElement root = new XElement("SensorList");
+                foreach (var sensors in ListSensors)
+                {
+                    XElement sensor =
+                        new XElement("Sensor",
+                            new XAttribute("Name", sensors.Name),
+                            new XAttribute("SensorId", sensors.SensorId),
+                            new XAttribute("Type", sensors.Type.ToString()),
+                            new XAttribute("Value", sensors.Value),
+                            new XAttribute("Description", sensors.Description),
+                                new XElement("Location",
+                                    new XAttribute("Latitude", sensors.Location.latitude),
+                                    new XAttribute("Longtitude", sensors.Location.longtitude)),
+                                new XElement("AcceptableValues",
+                                    new XAttribute("MinValue", sensors.AcceptableValues.min),
+                                    new XAttribute("MaxValue", sensors.AcceptableValues.max)));
+                    root.Add(sensor);
+                }
+                doc.Add(root);
+                doc.Save(cstPath);
             }
-            doc.Add(root);
-            doc.Save(cstPath);
+            catch { }
         }
 
         public static void LoadXmlFile()
         {
-            if (File.Exists(cstPath))
+            try
             {
-                var sensors = XDocument.Load(cstPath).Root.Elements("Sensor");
-                foreach (var sensorload in sensors)
+                if (File.Exists(cstPath))
                 {
-                    var name = sensorload.Attribute("Name").Value;
-                    var sensorId = Guid.Parse(sensorload.Attribute("SensorId").Value);
-                    var value = int.Parse(sensorload.Attribute("Value").Value);
-                    var type = (sensorType)Enum.Parse(typeof(sensorType), sensorload.Attribute("Type").Value);
-                    var desc = sensorload.Attribute("Description").Value;
-                    var location = (Double.Parse(sensorload.Element("Location").Attribute("Latitude").Value),
-                                    Double.Parse(sensorload.Element("Location").Attribute("Longtitude").Value));
-                    var acceptableValues = (Double.Parse(sensorload.Element("AcceptableValues").Attribute("MinValue").Value),
-                                            Double.Parse(sensorload.Element("AcceptableValues").Attribute("MaxValue").Value));
-                    AddSensor(name, sensorId, value, type, desc, location, acceptableValues);
+                    var sensors = XDocument.Load(cstPath).Root.Elements("Sensor");
+                    foreach (var sensorload in sensors)
+                    {
+                        var name = sensorload.Attribute("Name").Value;
+                        var sensorId = Guid.Parse(sensorload.Attribute("SensorId").Value);
+                        var value = int.Parse(sensorload.Attribute("Value").Value);
+                        var type = (sensorType)Enum.Parse(typeof(sensorType), sensorload.Attribute("Type").Value);
+                        var desc = sensorload.Attribute("Description").Value;
+                        var location = (Double.Parse(sensorload.Element("Location").Attribute("Latitude").Value),
+                                        Double.Parse(sensorload.Element("Location").Attribute("Longtitude").Value));
+                        var acceptableValues = (Double.Parse(sensorload.Element("AcceptableValues").Attribute("MinValue").Value),
+                                                Double.Parse(sensorload.Element("AcceptableValues").Attribute("MaxValue").Value));
+                        AddSensor(name, sensorId, value, type, desc, location, acceptableValues);
+                    }
                 }
             }
+            catch { }
         }
 
         public async static void RefreshSensors()

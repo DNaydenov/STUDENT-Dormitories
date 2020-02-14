@@ -35,6 +35,7 @@ namespace GUI
         {
             //Sofia location
             BingMap.Center = new Location(42.698334, 23.319941);
+            BingMap.LayoutUpdated += BingMap_LayoutUpdated;
 
             foreach (var sensor in SensorList.ListSensors)
             {
@@ -48,6 +49,14 @@ namespace GUI
             timer.Elapsed += RefreshSensorsWraper;
             timer.AutoReset = true;
             timer.Enabled = true;
+        }
+
+        private void BingMap_LayoutUpdated(object sender, EventArgs e)
+        {
+            if (BingMap.ZoomLevel < 3.3)
+            {
+                BingMap.ZoomLevel = 3.3;
+            }
         }
 
         private void RefreshSensorsWraper(Object source, System.Timers.ElapsedEventArgs e)
